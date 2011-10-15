@@ -30,6 +30,31 @@
         <layout height="141" mode="Portrait" width="136" x="13" y="122"/>
         <layout height="66" mode="Landscape" width="218" x="516" y="142"/>
     </Label>
+    <Label id="IDC_LABEL2" parent="SEARCH_FORM">
+        <property BGBitmapPath="epicerie.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <layout height="141" mode="Portrait" width="136" x="173" y="122"/>
+        <layout height="66" mode="Landscape" width="218" x="536" y="162"/>
+    </Label>
+    <Label id="IDC_LABEL3" parent="SEARCH_FORM">
+        <property BGBitmapPath="fruit et légume.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <layout height="141" mode="Portrait" width="136" x="333" y="122"/>
+        <layout height="66" mode="Landscape" width="218" x="536" y="162"/>
+    </Label>
+    <Label id="IDC_LABEL4" parent="SEARCH_FORM">
+        <property BGBitmapPath="produit laitier.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <layout height="141" mode="Portrait" width="136" x="13" y="282"/>
+        <layout height="66" mode="Landscape" width="218" x="536" y="162"/>
+    </Label>
+    <Label id="IDC_LABEL5" parent="SEARCH_FORM">
+        <property BGBitmapPath="boisson.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <layout height="141" mode="Portrait" width="136" x="173" y="282"/>
+        <layout height="66" mode="Landscape" width="218" x="536" y="162"/>
+    </Label>
+    <Label id="IDC_LABEL6" parent="SEARCH_FORM">
+        <property BGBitmapPath="boisson.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <layout height="141" mode="Portrait" width="136" x="333" y="282"/>
+        <layout height="66" mode="Landscape" width="218" x="536" y="162"/>
+    </Label>
     <CheckButton id="IDC_CHECKBUTTON1" parent="SEARCH_FORM">
         <property BackgroundStyle="BACKGROUND_STYLE_NONE" GroupID="0" GroupStyle="GROUP_STYLE_NONE" bShowtitleText="FALSE" colorOfText="" colorOfTitleText="" disabledColor="" disabledColorOpacity="100" disabledTextColor="" disabledTitleTextColor="" hAlign="ALIGN_LEFT" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" highlightedTitleTextColor="" normalColor="" normalColorOpacity="100" pressedColor="" pressedColorOpacity="100" pressedTextColor="" pressedTitleTextColor="" text="" titleText="" vAlign="ALIGN_BOTTOM"/>
         <layout height="141" mode="Portrait" style="CHECK_BUTTON_STYLE_RADIO" width="141" x="10" y="122"/>
