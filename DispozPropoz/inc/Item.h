@@ -34,7 +34,9 @@ public:
 	//Delete the item information corresponding to this id.
 	static bool DeleteItem(Integer id);
 
-private:
+//private:
+//svj: decided to make this public for now to avoid getters/setters
+public:
 	String title;
 	String description;
 	QualifiedCoordinates location;
