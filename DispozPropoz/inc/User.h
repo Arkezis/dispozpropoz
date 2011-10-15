@@ -11,6 +11,7 @@
 
 #include <FBase.h>
 #include <FLocQualifiedCoordinates.h>
+#include "Transaction.h"
 
 using namespace Osp::Base;
 using namespace Osp::Locations;
@@ -35,6 +36,17 @@ public:
 	//Usage: could be used to load the previous user who logged in on this one.
 	//Id information would have to be saved to disk prior to exit.
 	static User GetUser(Integer id);
+
+	//Computes the overall rating for this user
+	float GetOverallRating();
+
+	//Get all previous transactions of user in reverse chronological order
+	//You could pick out the previous comments and ratings for this user from this list
+	Transaction* GetAllTransactions();
+
+	Transaction* GetAllProposedTransactions();
+
+	Transaction* GetAllBorrowedTransactions();
 
 //private:
 //svj: decided to make this public for now to avoid individual getters and setters.
