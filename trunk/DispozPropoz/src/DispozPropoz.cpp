@@ -7,6 +7,7 @@
 
 
 #include "DispozPropoz.h"
+#include "FormMgr.h"
 #include "Form1.h"
 
 using namespace Osp::App;
@@ -42,7 +43,7 @@ DispozPropoz::OnAppInitializing(AppRegistry& appRegistry)
 
 	// Uncomment the following statement to listen to the screen on/off events.
 	//PowerManager::SetScreenEventListener(*this);
-
+/*
 	// Create a form
 	Form1 *pForm1 = new Form1();
 	pForm1->Initialize();
@@ -58,7 +59,26 @@ DispozPropoz::OnAppInitializing(AppRegistry& appRegistry)
 	pForm1->Draw();
 	pForm1->Show();
 
+	return true;*/
+
+
+	// WITH THE FORMMGR
+	result r = E_SUCCESS;
+
+	FormMgr *pFormMgr = new FormMgr();
+	if(pFormMgr->Initialize())
+	{
+		// on ajoute à la frame le FormMgr
+		r = Application::GetInstance()->GetAppFrame()->GetFrame()->AddControl(*pFormMgr);
+		TryCatch(r == E_SUCCESS, , GetErrorMessage(r));
+		// on définit le Form de départ
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_SEARCHDISPOZ,null);
+	}
 	return true;
+
+	CATCH:
+		SetLastResult(r);
+		return false;
 }
 
 bool

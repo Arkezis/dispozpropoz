@@ -6,7 +6,7 @@
  */
 
 #include "SearchForm.h"
-
+#include "FormMgr.h"
 SearchForm::SearchForm() {
 	// TODO Auto-generated constructor stub
 
@@ -31,17 +31,6 @@ SearchForm::OnInitializing(void)
 {
 	result r = E_SUCCESS;
 
-	// TODO: Add your initialization code here
-
-	// Get a button via resource ID
-	/*
-	__pButtonOk = static_cast<Button *>(GetControl(L"IDC_BUTTON_OK"));
-	if (__pButtonOk != null)
-	{
-		__pButtonOk->SetActionId(ID_BUTTON_OK);
-		__pButtonOk->AddActionEventListener(*this);
-	}
-	*/
 	pSearchBar = static_cast<SearchBar *>(GetControl(L"IDC_SEARCHBAR1"));
 	if (pSearchBar != null)
 	{
@@ -70,7 +59,7 @@ SearchForm::OnInitializing(void)
 		pCheckButton3->AddActionEventListener(*this);
 	}
 
-	pCheckButton4 = static_cast<CheckButton *>(GetControl(L"IDC_CHECKBUTTON4"));
+	pCheckButton4 = static_cast<CheckButton *>(GetControl(L"IDC_CHE	CKBUTTON4"));
 	if (pCheckButton4 != null)
 	{
 		//pCheckButton4->SetActionId(ID_CHECKBUTTON_4);
@@ -108,15 +97,26 @@ SearchForm::OnInitializing(void)
 	radioGroupObj->Add(*pCheckButton5);
 	radioGroupObj->Add(*pCheckButton6);
 
-	/* svj: stopping here
-	pFooterItem = static_cast<FooterItem *>(GetControl(L"ID_FOOTERITEM1"));
-	if (pFooterItem != null) {
-		pFooterItem->SetActionId(ID_BUTTON_SEARCH);
-		pFooterItem->AddTouchEventListener(*this);
-		pFooterItem->AddActionEventListener(*this);
+	Footer* pFooter = GetFooter();
+	if(pFooter)
+	{
+		FooterItem  footerItemCreate;
+		footerItemCreate.Construct(ID_FOOTERITEM1);
+		footerItemCreate.SetText("Recherche");
+		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->AddItem(footerItemCreate);
+		pFooter->SetBackButton();
+		pFooter->AddActionEventListener(*this);
+		SetFormBackEventListener(this);
 	}
-	*/
 
+	Header * pHeader = GetHeader();
+	if(pHeader){
+		pHeader->SetColor(Color(0x87,0xCD,0x4F));
+		pHeader->SetTitleText(L"Dispoz'");
+	}
 	return r;
 }
 
@@ -135,16 +135,56 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 {
 	switch(actionId)
 	{
-	/*case ID_BUTTON_OK:
+	case ID_SEARCHBAR:
 		{
-			AppLog("OK Button is clicked! \n");
+
 		}
 		break;
-	*/
+
+	case ID_CHECKBUTTON_1:
+	{
+		//if( static_cast<CheckButton>(source).IsSelected()== true)   AppLog("OK Button is clicked! \n");
+	}
+		break;
+
+	case ID_FOOTERITEM1:
+	{
+		Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
+		categorySelected=-1;
+		if(pCheckButton1->IsSelected()) categorySelected =0;
+		else if(pCheckButton2->IsSelected()) categorySelected =1;
+		else if(pCheckButton3->IsSelected()) categorySelected =2;
+		else if(pCheckButton4->IsSelected()) categorySelected =3;
+		else if(pCheckButton5->IsSelected()) categorySelected =4;
+		else if(pCheckButton6->IsSelected()) categorySelected =5;
+		textEntered = pSearchBar->GetText();
+		args->Add(textEntered);
+
+		Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
+		FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
+		if(pFormMgr == null)	return;
+		if(categorySelected.CompareTo(-1)>0){
+			args->Add(categorySelected.ToString());
+			AppLog("Search categ : %d \n",categorySelected.ToInt());
+		}
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
+
+	}
 	default:
 		break;
 	}
 
+}
+
+void
+SearchForm::OnFormBackRequested(Osp::Ui::Controls::Form& source)
+{
+	Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
+	FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
+
+	if(pFormMgr == null)
+			return;
+	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
 }
 
 void
