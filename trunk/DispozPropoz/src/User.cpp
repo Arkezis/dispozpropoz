@@ -25,17 +25,33 @@ User User::GetUser(Integer id) {
 
 //static method
 //Create profile information.  Return false if there is an error.
-User CreateUser(String name, String phoneNumber, bool showPhoneNumber,
+User User::CreateUser(String name, String phoneNumber, bool showPhoneNumber,
 		String email, bool showEmail,
 		QualifiedCoordinates coordinates){
 
-	AppLog("Not implemented yet!");
+	User u =  User();
+
+	u.name = name;
+	u.phoneNumber = phoneNumber;
+	u.showPhoneNumber = showPhoneNumber;
+	u.email = email;
+	u.showEmail = showEmail;
+	u.defaultCoordinates = coordinates;
+	return u;
+}
+
+bool User::save(){
+	return false;
 }
 
 bool User::UpdateUser(String name, String phoneNumber, bool showPhoneNumber,
 			String email, bool showEmail,
 			QualifiedCoordinates coordinates){
 
-	AppLog("Not implemented yet!");
-	return false;
+	this->name = name;
+	this->phoneNumber = phoneNumber;
+	this->showPhoneNumber = showPhoneNumber;
+	this->email = email;
+	this->showEmail = showEmail;
+	this->defaultCoordinates = coordinates;
 }
