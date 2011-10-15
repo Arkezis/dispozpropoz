@@ -1,0 +1,14 @@
+<?xml version='1.0' ?>
+<Manifest>
+    <Id>vfd61z6f3w</Id>
+    <Secret>339DC3D2B0F1565684709F21AE75E438</Secret>
+  <AppVersion>2.0.0</AppVersion>
+  <ManifestVersion>1.2</ManifestVersion>
+  <AppType>C++App</AppType>
+    <Privileges>
+    <Privilege>
+    	<Name>HTTP</Name></Privilege></Privileges>
+    <DeviceProfile>
+        <APIVersion>2.0</APIVersion>
+    </DeviceProfile>
+</Manifest>
