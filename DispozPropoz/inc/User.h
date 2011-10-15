@@ -32,6 +32,8 @@ public:
 			String email, bool showEmail,
 			QualifiedCoordinates coordinates);
 
+	bool save();
+
 	//Load the user information corresponding to this id.
 	//Usage: could be used to load the previous user who logged in on this one.
 	//Id information would have to be saved to disk prior to exit.
