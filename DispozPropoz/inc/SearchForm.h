@@ -10,10 +10,12 @@
 
 #include <FBase.h>
 #include <FUi.h>
+#include <FApp.h>
 
 using namespace Osp::Base;
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
+using namespace Osp::App;
 
 class SearchForm  :
 	public Osp::Ui::Controls::Form,
