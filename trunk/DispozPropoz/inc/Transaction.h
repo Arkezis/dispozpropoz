@@ -17,7 +17,17 @@ public:
 	Transaction();
 	virtual ~Transaction();
 
-private:
+public:
+	//Create transaction information.  Return false if there is an error.
+	static Transaction CreateTransaction(Integer itemId, Integer proposerId, Integer borrowerId,
+			String comment, Integer rating);
+
+	//Load the transaction information corresponding to this id.
+	static Transaction GetTransaction(Integer id);
+
+//private:
+//svj: decided to make this public for now to avoid getters/setters
+public:
 	Integer itemId;
 	Integer proposerId;
 	Integer borrowerId;
