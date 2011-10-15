@@ -19,11 +19,27 @@ public:
 	Item();
 	virtual ~Item();
 
+public:
+	//Update item information.  Return false if there is an error.
+	bool UpdateItem(Integer id, String title, String description,
+			QualifiedCoordinates coordinates, Integer proposerId);
+
+	//Create item information.  Return false if there is an error.
+	static Item CreateItem(String title, String description,
+			QualifiedCoordinates coordinates, Integer proposerId);
+
+	//Load the item information corresponding to this id.
+	static Item GetItem(Integer id);
+
+	//Delete the item information corresponding to this id.
+	static bool DeleteItem(Integer id);
+
 private:
 	String title;
 	String description;
 	QualifiedCoordinates location;
 	Integer id;
+	Integer proposerId;
 };
 
 #endif /* ITEM_H_ */
