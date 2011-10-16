@@ -37,8 +37,6 @@ protected:
 	static const int ID_FOOTERITEM_INFO= ID_FOOTERITEM_DISPOZ+1;
 	static const int ID_BUTTON_CLOSE_POPUP = 301;
 	Osp::Ui::Controls::ListView* __pList;
-	Osp::Ui::Controls::Popup* __pPopup;
-	Osp::Ui::Controls::Popup* _pPopup;
 	Osp::Ui::Controls::MessageBox msgBoxMap;
 
 public:

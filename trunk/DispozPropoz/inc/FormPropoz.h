@@ -6,7 +6,8 @@
 
 class FormPropoz :
 	public Osp::Ui::Controls::Form,
-	public Osp::Ui::IActionEventListener
+	public Osp::Ui::IActionEventListener,
+	public Osp::Ui::Controls::IFormBackEventListener
 {
 
 // Construction
@@ -20,9 +21,13 @@ protected:
 
 
 public:
+
+	static const int ID_BUTTON_ADD = 100;
 	virtual result OnInitializing(void);
 	virtual result OnTerminating(void);
 	virtual void OnActionPerformed(const Osp::Ui::Control& source, int actionId);
+	virtual void OnFormBackRequested(Osp::Ui::Controls::Form& source);
+
 };
 
 #endif	//_FORMPROPOZ_H_
