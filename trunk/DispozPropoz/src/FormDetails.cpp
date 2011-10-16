@@ -6,6 +6,8 @@ using namespace Osp::Base;
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::Graphics;
+using namespace Osp::App;
+using namespace Osp::Base::Collection;
 
 FormDetails::FormDetails(void)
 {
@@ -35,10 +37,10 @@ FormDetails::OnInitializing(void)
 	String imgPlusPath = L"/Home/plus_40.png";
 	Bitmap *bitmapPlus = imgPlus.DecodeN(imgPlusPath, BITMAP_PIXEL_FORMAT_ARGB8888, 41, 41);*/
 
-	Osp::Media::Image imgContact;
-	imgContact.Construct();
-	String imgContactPath = L"/Home/contact_198.png";
-	Bitmap *bitmapContact = imgContact.DecodeN(imgContactPath, BITMAP_PIXEL_FORMAT_ARGB8888, 188, 44);
+//	Osp::Media::Image imgContact;
+//	imgContact.Construct();
+//	String imgContactPath = L"/Home/contact_198.png";
+//Bitmap *bitmapContact = imgContact.DecodeN(imgContactPath, BITMAP_PIXEL_FORMAT_ARGB8888, 188, 44);
 
 	Osp::Media::Image imgRating;
 	imgRating.Construct();
@@ -74,34 +76,34 @@ FormDetails::OnInitializing(void)
 	pScrollPanel->AddControl(*pLabelTitleInfos);
 
 	Label* pLabelTitleItem = new Label();
-	pLabelTitleItem->Construct(Rectangle(5, 65, 350, 40), "Dindonpoilu");
+	pLabelTitleItem->Construct(Rectangle(5, 65, 350, 40), "John Karp");
 	pLabelTitleItem->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelTitleItem->SetTextColor(Color(0xE9, 0x50, 0x0E));
 	pScrollPanel->AddControl(*pLabelTitleItem);
 
 	Label* pLabelAdd1 = new Label();
-	pLabelAdd1->Construct(Rectangle(5, 115, 350, 30), "Résidence toto");
+	pLabelAdd1->Construct(Rectangle(5, 115, 350, 30), "IESA Multimedia");
 	pLabelAdd1->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelAdd1->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
 	pLabelAdd1->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelAdd1);
 
 	Label* pLabelAdd2 = new Label();
-	pLabelAdd2->Construct(Rectangle(5, 145, 350, 30), "app 5 - étage 5");
+	pLabelAdd2->Construct(Rectangle(5, 145, 350, 30), "étage 5");
 	pLabelAdd2->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelAdd2->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
 	pLabelAdd2->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelAdd2);
 
 	Label* pLabelAdd3 = new Label();
-	pLabelAdd3->Construct(Rectangle(5, 175, 350, 30), "5 avenue de l'Océan");
+	pLabelAdd3->Construct(Rectangle(5, 175, 350, 30), "5 avenue de l'Opéra");
 	pLabelAdd3->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelAdd3->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
 	pLabelAdd3->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelAdd3);
 
 	Label* pLabelAdd4 = new Label();
-	pLabelAdd4->Construct(Rectangle(5, 205, 350, 30), "Le porge");
+	pLabelAdd4->Construct(Rectangle(5, 205, 350, 30), "75001 Paris");
 	pLabelAdd4->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelAdd4->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
 	pLabelAdd4->SetTextColor(Color(0x33, 0x33, 0x33));
@@ -137,7 +139,7 @@ FormDetails::OnInitializing(void)
 
 	Label* pLabelTitleItemDispoz2 = new Label();
 	pLabelTitleItemDispoz2->Construct(Rectangle(300, 335, 250, 40), "10 unités");
-	pLabelTitleItemDispoz2->SetTextConfig(20, LABEL_TEXT_STYLE_NORMAL);
+	pLabelTitleItemDispoz2->SetTextConfig(22, LABEL_TEXT_STYLE_NORMAL);
 	pLabelTitleItemDispoz2->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelTitleItemDispoz2->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelTitleItemDispoz2);
@@ -154,7 +156,7 @@ FormDetails::OnInitializing(void)
 	/* PANIER */
 	// Creates a Panel
 	Panel* pPanelPanier = new Panel();
-	pPanelPanier->Construct(Rectangle(5, 395, GetClientAreaBounds().width-15, 290));
+	pPanelPanier->Construct(Rectangle(5, 395, GetClientAreaBounds().width-15, 300));
 	pPanelPanier->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
 	pScrollPanel->AddControl(*pPanelPanier);
 
@@ -180,26 +182,26 @@ FormDetails::OnInitializing(void)
 */
 	//image Maps
 	Label* pLabelImgMap = new Label();
-	pLabelImgMap->Construct(Rectangle(100, 460, 300, 218), "");
+	pLabelImgMap->Construct(Rectangle(80, 420, 300, 218), "");
 	pLabelImgMap->SetBackgroundBitmap(*bitmapMap);
 	//pLabelImgMap->AddTouchEventListener();
 	pScrollPanel->AddControl(*pLabelImgMap);
-
+/*
 	//image Contact
 	Label* pLabelImgContact = new Label();
-	pLabelImgContact->Construct(Rectangle(120, 775, 220, 60), "");
+	pLabelImgContact->Construct(Rectangle(120, 675, 220, 60), "");
 	pLabelImgContact->SetBackgroundBitmap(*bitmapContact);
 	//pLabelImgContact->AddTouchEventListener();
 	pScrollPanel->AddControl(*pLabelImgContact);
 
 	//label image
 	Label* pLabelTxt4Contact = new Label();
-	pLabelTxt4Contact->Construct(Rectangle(180, 780, 188, 44), "Contacter");
+	pLabelTxt4Contact->Construct(Rectangle(180, 680, 188, 44), "Contacter");
 	pLabelTxt4Contact->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
 	pLabelTxt4Contact->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelTxt4Contact->SetTextColor(Color(0xFF, 0xFF, 0xFF));
 	pScrollPanel->AddControl(*pLabelTxt4Contact);
-
+*/
 	//button Contacter
 
 	//Button* pButton = new Button();
@@ -217,9 +219,13 @@ FormDetails::OnInitializing(void)
 	Footer* pFooter = GetFooter();
 	if(pFooter)
 	{
+		FooterItem  footerItemCreate;
+		footerItemCreate.Construct(ID_FOOTERITEM1);
+		footerItemCreate.SetText("Contacter");
 		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
 		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
 		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->AddItem(footerItemCreate);
 		pFooter->SetBackButton();
 		pFooter->AddActionEventListener(*this);
 		SetFormBackEventListener(this);
@@ -239,20 +245,57 @@ FormDetails::OnTerminating(void)
 
 	return r;
 }
+void FormDetails::MessageAppControlEmailSample(void)
+{
+   result r = E_SUCCESS;
+   ArrayList* pDataList = null;
+   pDataList = new ArrayList();
 
+   pDataList->Construct();
+   String pData(L"subject: Message de PropozDispoz");
+   pDataList->Add(pData);
+
+   String pData2(L"text:");
+   pDataList->Add(pData2);
+
+   String pData3(L"to:alix.cyril@gmail.com");
+   pDataList->Add(pData3);
+
+   String pData4(L"cc:null");
+   pDataList->Add(pData4);
+
+   String pData5(L"bcc:null");
+   pDataList->Add(pData5);
+
+   String pData6(L"attachments:");
+   pDataList->Add(pData6);
+
+   AppControl* pAc = AppManager::FindAppControlN(APPCONTROL_EMAIL,"");
+   if(pAc)
+   {
+      r = pAc->Start(pDataList, null);
+      if (r != E_SUCCESS) {
+         AppLog("ERRO: %S",GetErrorMessage(r));
+      }
+      TryReturnVoid(r,GetErrorMessage(r));
+      delete pAc;
+   }
+   pDataList->RemoveAll(true);
+   delete pDataList;
+}
 void
 FormDetails::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 {
-	/*switch(actionId)
-	{
-	case ID_BUTTON_OK:
-		{
-			AppLog("OK Button is clicked! \n");
-		}
-		break;
-	default:
-		break;
-	}*/
+//	switch(actionId)
+//	{
+//	case ID_FOOTERITEM1:
+//		{
+//			MessageAppControlEmailSample();
+//		}
+//		break;
+//	default:
+//		break;
+//	}
 }
 
  void OnFormBackRequested(Osp::Ui::Controls::Form& source){
