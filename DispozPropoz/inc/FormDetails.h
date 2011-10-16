@@ -16,6 +16,7 @@ public:
 	FormDetails(void);
 	virtual ~FormDetails(void);
 	bool Initialize(void);
+	static const int ID_FOOTERITEM1 = 101;
 
 // Implementation
 protected:
@@ -36,7 +37,7 @@ public:
 	virtual void OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
-
+	void MessageAppControlEmailSample(void);
 };
 
 #endif	//_FORMDETAILS_H_
