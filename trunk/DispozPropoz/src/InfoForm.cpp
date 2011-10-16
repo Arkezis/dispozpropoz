@@ -85,9 +85,10 @@ InfoForm::OnInitializing(void)
 	pScrollPanel->SetBackgroundColor(Color(0xF2, 0xE7, 0xE4));
 
 
+	//Mes Infos
 	// Creates a Panel
 	Panel* pPanelInfos = new Panel();
-	pPanelInfos->Construct(Rectangle(5, 5, GetClientAreaBounds().width-15, 240));
+	pPanelInfos->Construct(Rectangle(5, 5, GetClientAreaBounds().width-15, 200));
 	pPanelInfos->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
 	pScrollPanel->AddControl(*pPanelInfos);
 
@@ -113,105 +114,48 @@ InfoForm::OnInitializing(void)
 	pScrollPanel->AddControl(*pLabelPseudoValue);
 
 	Label* pLabelEmailTitle= new Label();
-	pLabelEmailTitle->Construct(Rectangle(5, 100, 500, 35), "Mail:");
+	pLabelEmailTitle->Construct(Rectangle(5, 105, 500, 35), "Mail:");
 	pLabelEmailTitle->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelEmailTitle->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
 	pLabelEmailTitle->SetTextColor(Color(0xE9, 0x50, 0x0E));
 	pScrollPanel->AddControl(*pLabelEmailTitle);
 
 	Label* pLabelEmailValue= new Label();
-	pLabelEmailValue->Construct(Rectangle(100, 100, 500, 35), "dindonpoilu@bemyapp.com");
+	pLabelEmailValue->Construct(Rectangle(100, 105, 500, 35), "dindonpoilu@bemyapp.com");
 	pLabelEmailValue->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelEmailValue->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
 	pLabelEmailValue->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelEmailValue);
 
 	Label* pLabelPhoneTitle= new Label();
-	pLabelPhoneTitle->Construct(Rectangle(5, 135, 500, 35), "Phone:");
+	pLabelPhoneTitle->Construct(Rectangle(5, 145, 500, 35), "Phone:");
 	pLabelPhoneTitle->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelPhoneTitle->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
 	pLabelPhoneTitle->SetTextColor(Color(0xE9, 0x50, 0x0E));
 	pScrollPanel->AddControl(*pLabelPhoneTitle);
 
 	Label* pLabelPhoneValue= new Label();
-	pLabelPhoneValue->Construct(Rectangle(100, 135, 500, 35), "06 12 34 56 78");
+	//pLabelPhoneValue->Construct(Rectangle(100, 145, 500, 35), "06 12 34 56 78");
+	pLabelPhoneValue->Construct(Rectangle(100, 145, 500, 35), "Masqué (privé)");
 	pLabelPhoneValue->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelPhoneValue->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelPhoneValue->SetTextConfig(30, LABEL_TEXT_STYLE_ITALIC);
 	pLabelPhoneValue->SetTextColor(Color(0x33, 0x33, 0x33));
 	pScrollPanel->AddControl(*pLabelPhoneValue);
 
+
 	/*
+	//Mes Dispoz
 	// Creates a Panel
-	Panel* pPanelDispoz = new Panel();
-	pPanelDispoz->Construct(Rectangle(5, 250, GetClientAreaBounds().width-15, 140));
-	pPanelDispoz->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
-	pScrollPanel->AddControl(*pPanelDispoz);
+	Panel* pPanelMesDispoz= new Panel();
+	pPanelMesDispoz->Construct(Rectangle(5, 205, GetClientAreaBounds().width-15, 540));
+	pPanelMesDispoz->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
+	pScrollPanel->AddControl(*pPanelMesDispoz);
 
-	Label* pLabelTitleDispoz = new Label();
-	pLabelTitleDispoz->Construct(Rectangle(5, 270, 400, 25), "Dispoz'");
-	pLabelTitleDispoz->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelTitleDispoz->SetTextConfig(23, LABEL_TEXT_STYLE_ITALIC);
-	pLabelTitleDispoz->SetTextColor(Color(0xE9, 0x50, 0x0E));
-	pScrollPanel->AddControl(*pLabelTitleDispoz);
-
-	Label* pLabelTitleItemDispoz = new Label();
-	pLabelTitleItemDispoz->Construct(Rectangle(5, 335, 330, 40), "Citron");
-	pLabelTitleDispoz->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelTitleItemDispoz->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelTitleItemDispoz->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelTitleItemDispoz);
-
-	//image +
-	Label* pLabelImgPlus = new Label();
-	pLabelImgPlus->Construct(Rectangle(405, 335, 41, 41), "");
-	//pLabelImgPlus->SetBackgroundBitmap(*bitmapPlus);
-	//pLabelImgPlus->AddTouchEventListener();
-	pScrollPanel->AddControl(*pLabelImgPlus);
-
-
-
-	// Creates a Panel
-	Panel* pPanelPanier = new Panel();
-	pPanelPanier->Construct(Rectangle(5, 395, GetClientAreaBounds().width-15, 170));
-	pPanelPanier->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
-	pScrollPanel->AddControl(*pPanelPanier);
-
-	Label* pLabelTitlePanier = new Label();
-	pLabelTitlePanier->Construct(Rectangle(5, 400, 400, 25), "Panier");
-	pLabelTitlePanier->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelTitlePanier->SetTextConfig(23, LABEL_TEXT_STYLE_ITALIC);
-	pLabelTitlePanier->SetTextColor(Color(0xE9, 0x50, 0x0E));
-	pScrollPanel->AddControl(*pLabelTitlePanier);
-
-	Label* pLabelNumberItemsPanier = new Label();
-	pLabelNumberItemsPanier->Construct(Rectangle(5, 430, 50, 40), "4");
-	pLabelNumberItemsPanier->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelNumberItemsPanier->SetTextColor(Color(0xE9, 0x50, 0x0E));
-	pScrollPanel->AddControl(*pLabelNumberItemsPanier);
-
-	Label* pLabelTxt4NumberItemsPanier = new Label();
-	pLabelTxt4NumberItemsPanier->Construct(Rectangle(55, 430, 330, 40), "article(s) dans le panier");
-	pLabelTxt4NumberItemsPanier->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelTxt4NumberItemsPanier->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelTxt4NumberItemsPanier->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelTxt4NumberItemsPanier);
-
-	//image +
-	Label* pLabelImgContact = new Label();
-	pLabelImgContact->Construct(Rectangle(50, 335, 110, 30), "");
-	//pLabelImgContact->SetBackgroundBitmap(*bitmapContact);
-	//pLabelImgContact->AddTouchEventListener();
-	pScrollPanel->AddControl(*pLabelImgContact);
-
-	//button Contacter
-
-	//Button* pButton = new Button();
-	//pButton->Construct(Rectangle(0, 0, 150, 80));
-	//pScrollPanel->AddControl(*pButton);
-
-	//EditField* pEdit = new EditField();
-	//pEdit->Construct(Rectangle(0, 100, 150, 80));
-	//pScrollPanel->AddControl(*pEdit);
+	Label* pLabelTitleMesDispoz = new Label();
+	pLabelTitleMesDispoz ->Construct(Rectangle(5, 210, 500, 30), "Mes Dispoz");
+	pLabelTitleMesDispoz ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelTitleMesDispoz ->SetTextConfig(23, LABEL_TEXT_STYLE_ITALIC);
+	pScrollPanel->AddControl(*pLabelTitleMesDispoz );
 	*/
 
 	// Adds a ScrollPanel to the Form
