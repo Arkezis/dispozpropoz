@@ -197,19 +197,28 @@ FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 void
 FormDispoz::OnListViewItemStateChanged(Osp::Ui::Controls::ListView &listView, int index, int elementId, Osp::Ui::Controls::ListItemStatus status)
 {
-	// Todo:
+	Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
+	FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
+
+	if(pFormMgr == null)
+			return;
+	pFormMgr->SendUserEvent(FormMgr::REQUEST_DETAILSDISPOZ, null);
 }
 
 void
 FormDispoz::OnListViewItemSwept(Osp::Ui::Controls::ListView &listView, int index, Osp::Ui::Controls::SweepDirection direction)
     {
         	// Todo:
+	AppLog("Coucou cheup2");
+
 }
 
 void
 FormDispoz::OnListViewContextItemStateChanged(Osp::Ui::Controls::ListView &listView, int index, int elementId, Osp::Ui::Controls::ListContextItemStatus state)
 {
         	// Todo:
+	AppLog("Coucou cheup3");
+
 }
 
 int
@@ -247,7 +256,7 @@ FormDispoz::CreateItem(int index, int itemWidth)
 	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_NORMAL, Color(0xDE, 0xC4, 0xBD));
 	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_PRESSED, Color(0xF5, 0xB4, 0xA2));
 	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_HIGHLIGHTED, Color(0xF5, 0xB4, 0xA2));
-
+// ajouter un listener ?
 	return pItem;
 }
 
@@ -291,6 +300,7 @@ void
 FormDispoz::OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 6");
 
 }
 
@@ -298,6 +308,7 @@ void
 FormDispoz::OnTouchFocusIn(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 4");
 
 }
 
@@ -305,6 +316,7 @@ void
 FormDispoz::OnTouchFocusOut(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 3");
 
 }
 
@@ -312,6 +324,7 @@ void
 FormDispoz::OnTouchLongPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 2");
 
 }
 
@@ -319,6 +332,7 @@ void
 FormDispoz::OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 1");
 
 }
 
@@ -326,6 +340,7 @@ void
 FormDispoz::OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	AppLog("Coucou cheup");
 
 }
 
@@ -333,5 +348,6 @@ void
 FormDispoz::OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo)
 {
 	// TODO: Add your implementation codes here
+	 AppLog("Cheup 5");
 
 }
