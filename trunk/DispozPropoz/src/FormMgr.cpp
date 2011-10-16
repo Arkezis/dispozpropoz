@@ -55,19 +55,33 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 			FormDispoz *listDispozForm = new FormDispoz();
 			listDispozForm->Initialize();
 			AppLog("Avant args");
-			if(pArgs!=null) {
+
+			if (pArgs==null){
+				pArgs = new Osp::Base::Collection::LinkedList();
+				pArgs->Add(*(new String("")));
+				pArgs->Add(*(new String("-1")));
+			}
+
 				String* arg1 = ((String*)pArgs->GetAt(0));
 				String* arg2 = ((String*)pArgs->GetAt(1));
 
 				listDispozForm->populateWithParams(arg1,arg2);
-			}
+
 			AppLog("Après args");
 			pFrame->AddControl(*listDispozForm);
+			AppLog("Après args");
 			pFrame->SetCurrentForm(*listDispozForm);
+			AppLog("Après args");
 			pFrame->RequestRedraw();
-			if (null != __prevForm)
-				pFrame->RemoveControl(*__prevForm);
+			AppLog("Après args4");
+			if (null != __prevForm){
+				AppLog("Après args3");
+				//pFrame->RemoveControl(*__prevForm);
+				AppLog("Après args2");
+			}
+			AppLog("Après args1");
 			__prevForm = listDispozForm;
+			AppLog("Après args");
 		}
 		break;
 

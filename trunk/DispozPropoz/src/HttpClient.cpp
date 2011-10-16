@@ -94,7 +94,6 @@ void HttpClient::OnTransactionReadyToRead(HttpSession& httpSession, HttpTransact
 		{
 			__content = pHttpResponse->ReadBodyN();
 			AppLog("ICI -- Fichier HttpClient.cpp");
-			((HttpClient*)__parser)->OnHTTPClientDone();
 		}
 	}
 }
@@ -112,7 +111,6 @@ Osp::Base::ByteBuffer* HttpClient::getResults(){
 void HttpClient::OnTransactionAborted(HttpSession& httpSession, HttpTransaction& httpTransaction, result r)
 {
 	AppLog("####### OnTransactionAborted! (%s)#######", GetErrorMessage(r));
-
 	delete &httpTransaction;
 }
 
@@ -131,8 +129,10 @@ void HttpClient::OnTransactionHeaderCompleted(HttpSession& httpSession, HttpTran
 void HttpClient::OnTransactionCompleted(HttpSession& httpSession, HttpTransaction& httpTransaction)
 {
 	AppLog("####### OnTransactionCompleted! #######");
-
 	delete &httpTransaction;
+	if(__parser!=null){
+			(dynamic_cast<HttpClient*>(__parser))->OnHTTPClientDone();
+	}
 }
 
 void HttpClient::OnTransactionCertVerificationRequiredN(HttpSession& httpSession, HttpTransaction& httpTransaction, Osp::Base::String* pCert)

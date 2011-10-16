@@ -6,6 +6,8 @@ using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::Graphics;
 using namespace Osp::App;
+using namespace Osp::Locations;
+using namespace Osp::Locations::Services;
 
 FormPropoz::FormPropoz(void)
 {
@@ -78,6 +80,7 @@ FormPropoz::OnInitializing(void)
 		//On met la date a aujourd'hui
         if(pDate!=null){
         	pDate->SetCurrentDate();
+        	pDate->SetDay(pDate->GetDay()+1);
         }
 
 
@@ -108,12 +111,16 @@ FormPropoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 			DateTime dt(pDate->GetDate());
 			String sdt(dt.ToString());
 
+			AppLog("%ls, %ls, %ls, %ls", &pn, &pq, &pu, &sdt);
+
 			DateTime date;
 			Osp::System::SystemTime::GetCurrentTime(date);
-			if(pDate->GetDate().CompareTo(date)<0){
+			if(date.CompareTo(pDate->GetDate())>=0){
 				//TODO mettre une popup si le mec met une date plus tot
 				Osp::Ui::Controls::MessageBox* msgB = new MessageBox();
 				msgB->Construct(L"Problème de date",L"Impossible de mettre une date antérieure à aujoud\'hui",MSGBOX_STYLE_OK  ,0);
+				int modalR = 0;
+				msgB->ShowAndWait(modalR);
 				return;
 			}
 
@@ -121,13 +128,20 @@ FormPropoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 				//TODO ajouter message box pour dire qu'il y a quelque chose de vide...
 				Osp::Ui::Controls::MessageBox* msgB = new MessageBox();
 				msgB->Construct(L"Champs vide",L"Tous les champs doivent être remplis",MSGBOX_STYLE_OK  ,0);
+				int modalR = 0;
+				msgB->ShowAndWait(modalR);
 				return;
 			}
 
-			Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
-			FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
-			if(pFormMgr == null)	return;
-			pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
+			locProvider = new LocationProvider();
+			// Construct the LocationProvider by using GPS and WPS (Wi-Fi Positioning System) as its locating mechanism
+			locProvider->Construct(LOC_METHOD_HYBRID);
+			// *this c'est le listener comme sur android
+			//5 c'est le nombre de seconde entre deux location update successive
+			//le false, on veut pas les info satelite, seulement les information long lat
+			locProvider->RequestLocationUpdates(*this, 1, false);
+			isSent=false;
+
 		}
 		break;
 
@@ -147,13 +161,73 @@ FormPropoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	}
 }
 
+
+void
+FormPropoz::OnLocationUpdated(Location& location){
+	if(isSent==false && location.GetQualifiedCoordinates() != null)
+	     {
+		locProvider->CancelLocationUpdates();
+				isSent=true;
+	           const QualifiedCoordinates *q =
+	                 location.GetQualifiedCoordinates();
+	            // The lat and lon values
+	            double longitude = q->GetLongitude();
+	            double latitude = q->GetLatitude();
+
+	            AppLog("%f, %f", longitude, latitude);
+
+	            String pn(pName->GetText());
+				String pq(pQuantity->GetText());
+				String pu(pUnit->GetText());
+				DateTime dt(pDate->GetDate());
+				String sdt(dt.ToString());
+
+				AppLog("%ls, %ls, %ls, %ls", &pn, &pq, &pu, &sdt);
+				HttpClient* hc = new HttpClient();
+				hc->SetOnHTTPClientDone(dynamic_cast<Form*>(this));
+				String host(L"http://cilheo.fr/");
+				String uri(L"http://cilheo.fr/propoz.php?action=insert&domaine=0&titre=");
+				uri.Append(pn);
+				uri.Append("&date=");
+				uri.Append(dt.GetTime().GetTicks());
+				uri.Append("&x=");
+				uri.Append(0);
+				uri.Append("&y=");
+				uri.Append(0);
+				uri.Append("&nombres=");
+				uri.Append(pq);
+				uri.Append("&volumes=");
+				uri.Append(pu);
+
+				AppLog("-----------------------------------%ls", &uri);
+
+				hc->goHttpGet(host, uri);
+	     }
+}
+
+
+void
+FormPropoz::OnHTTPClientDone(){
+	AppLog("Je back");
+	Form* f;
+	OnFormBackRequested(*f);
+
+}
+void
+FormPropoz::OnProviderStateChanged(LocProviderState newState){
+	//todo : nothing atm...
+}
+
 void FormPropoz::OnFormBackRequested(Osp::Ui::Controls::Form& source){
 		AppLog("Je back");
 		Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
 		FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
 		if(pFormMgr == null)
 				return;
-		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
+		Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
+		args->Add(*(new String("")));
+		args->Add(*(new String("-1")));
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
 }
 
 
