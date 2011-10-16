@@ -57,10 +57,10 @@ FormDispoz::OnInitializing(void)
 		pFooter->SetItemColor(FOOTER_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
 		pFooter->SetItemColor(FOOTER_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
 		pFooter->SetItemColor(FOOTER_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
-		FooterItem  footerItemCreate;
+	/*	FooterItem  footerItemCreate;
 		footerItemCreate.Construct(ID_FOOTERITEM_MAP);
 		footerItemCreate.SetText("Carte");
-		pFooter->AddItem(footerItemCreate);
+		pFooter->AddItem(footerItemCreate);*/
 		FooterItem  footerItemCreate2;
 		footerItemCreate2.Construct(ID_FOOTERITEM_PROPOZ);
 		footerItemCreate2.SetText("Propoz'");
@@ -71,7 +71,7 @@ FormDispoz::OnInitializing(void)
 		pFooter->AddItem(footerItemCreate3);
 		FooterItem  footerItemCreate4;
 		footerItemCreate4.Construct(ID_FOOTERITEM_INFO);
-		footerItemCreate4.SetText("Info");
+		footerItemCreate4.SetText("Profil");
 		pFooter->AddItem(footerItemCreate4);
 		pFooter->AddActionEventListener(*this);
 	}
@@ -109,13 +109,13 @@ FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 {
 	switch(actionId)
 	{
-		case ID_FOOTERITEM_MAP:
+	/*	case ID_FOOTERITEM_MAP:
 		{
 			msgBoxMap.Construct("Carte des dispoz'","Cette fonctionnalité n'est pas disponible pour l'instant",MSGBOX_STYLE_OK ,0);
 			int modalResult = 0;
 			msgBoxMap.ShowAndWait(modalResult);
 		}
-		break;
+		break;*/
 		case ID_FOOTERITEM_PROPOZ:
 		{
 			Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();

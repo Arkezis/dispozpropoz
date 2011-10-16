@@ -59,7 +59,7 @@ SearchForm::OnInitializing(void)
 		pCheckButton3->AddActionEventListener(*this);
 	}
 
-	pCheckButton4 = static_cast<CheckButton *>(GetControl(L"IDC_CHE	CKBUTTON4"));
+	pCheckButton4 = static_cast<CheckButton *>(GetControl(L"IDC_CHECKBUTTON4"));
 	if (pCheckButton4 != null)
 	{
 		//pCheckButton4->SetActionId(ID_CHECKBUTTON_4);
@@ -76,6 +76,7 @@ SearchForm::OnInitializing(void)
 	pCheckButton6 = static_cast<CheckButton *>(GetControl(L"IDC_CHECKBUTTON6"));
 	if (pCheckButton6 != null)
 	{
+		AppLog("Problème button6");
 		//pCheckButton6->SetActionId(ID_CHECKBUTTON_6);
 		pCheckButton6->AddActionEventListener(*this);
 	}
@@ -164,26 +165,33 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	{
 		Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
 		categorySelected=-1;
+		AppLog("Jm'arrete ici 1");
 		if(pCheckButton1->IsSelected()) categorySelected =0;
 		else if(pCheckButton2->IsSelected()) categorySelected =1;
 		else if(pCheckButton3->IsSelected()) categorySelected =2;
 		else if(pCheckButton4->IsSelected()) categorySelected =3;
 		else if(pCheckButton5->IsSelected()) categorySelected =4;
 		else if(pCheckButton6->IsSelected()) categorySelected =5;
+		AppLog("Jm'arrête ici 1 bis");
 		textEntered = pSearchBar->GetText();
+		AppLog("Jm'arrete ici 2");
 
 		Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
 		FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
 		if(pFormMgr == null)	return;
+		AppLog("Jm'arrete ici 3");
 
 		if(textEntered.CompareTo("")>0 || textEntered.CompareTo("")<0 )	args->Add(textEntered);
 		if(categorySelected.CompareTo(-1)>0){
 			args->Add(categorySelected.ToString());
 			AppLog("Search categ : %d \n",categorySelected.ToInt());
 		}
-		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
+		AppLog("Jm'arrete ici");
+		if(args->GetCount()>0)	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
+		else pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
 
 	}
+	break;
 	case ID_HEADER_ABOUT_BUTTON:
 	{
 		msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
