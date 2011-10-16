@@ -53,7 +53,6 @@ private:
 	Osp::Ui::Controls::CheckButton *pCheckButton4;
 	Osp::Ui::Controls::CheckButton *pCheckButton5;
 	Osp::Ui::Controls::CheckButton *pCheckButton6;
-	//Osp::Ui::Controls::FooterItem *pFooterItem;
 	Integer categorySelected;
 	String textEntered;
 
