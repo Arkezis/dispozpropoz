@@ -52,7 +52,6 @@ InfoForm::OnInitializing(void)
 	Footer* pFooter = GetFooter();
 	if(pFooter)
 	{
-		AppLog("Yes footer was created.");
 		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
 		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
 		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
@@ -63,7 +62,7 @@ InfoForm::OnInitializing(void)
 	Header * pHeader = GetHeader();
 	if(pHeader){
 		pHeader->SetColor(Color(0x87,0xCD,0x4F));
-		pHeader->SetTitleText(L"Dispoz'");
+		pHeader->SetTitleText(L"Profil");
 
 		ButtonItem buttonItem;
 		buttonItem.Construct(BUTTON_ITEM_STYLE_ICON, ID_HEADER_ABOUT_BUTTON);
@@ -79,13 +78,13 @@ InfoForm::OnInitializing(void)
 		pHeader->AddActionEventListener(*this);
 	}
 
+
 	// Creates a ScrollPanel
 	ScrollPanel* pScrollPanel = new ScrollPanel();
 	pScrollPanel->Construct(Rectangle(0, 0, GetClientAreaBounds().width, GetClientAreaBounds().height));
 	pScrollPanel->SetBackgroundColor(Color(0xF2, 0xE7, 0xE4));
 
 
-	/* INFOS */
 	// Creates a Panel
 	Panel* pPanelInfos = new Panel();
 	pPanelInfos->Construct(Rectangle(5, 5, GetClientAreaBounds().width-15, 240));
@@ -93,48 +92,55 @@ InfoForm::OnInitializing(void)
 	pScrollPanel->AddControl(*pPanelInfos);
 
 	Label* pLabelTitleInfos = new Label();
-	pLabelTitleInfos->Construct(Rectangle(5, 5, 400, 25), "Infos");
+	pLabelTitleInfos->Construct(Rectangle(5, 5, 500, 30), "Mes Infos");
 	pLabelTitleInfos->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelTitleInfos->SetTextConfig(23, LABEL_TEXT_STYLE_ITALIC);
 	pLabelTitleInfos->SetTextColor(Color(0xE9, 0x50, 0x0E));
 	pScrollPanel->AddControl(*pLabelTitleInfos);
 
-	Label* pLabelTitleItem = new Label();
-	pLabelTitleItem->Construct(Rectangle(5, 65, 350, 40), "Dindonpoilu");
-	pLabelTitleItem->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelTitleItem->SetTextColor(Color(0xE9, 0x50, 0x0E));
-	pScrollPanel->AddControl(*pLabelTitleItem);
+	Label* pLabelPseudoTitle= new Label();
+	pLabelPseudoTitle->Construct(Rectangle(5, 65, 500, 35), "Pseudo:");
+	pLabelPseudoTitle->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelPseudoTitle->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelPseudoTitle->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelPseudoTitle);
 
-	Label* pLabelAdd1 = new Label();
-	pLabelAdd1->Construct(Rectangle(5, 115, 350, 30), "RÃ©sidence toto");
-	pLabelAdd1->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelAdd1->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelAdd1->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelAdd1);
+	Label* pLabelPseudoValue= new Label();
+	pLabelPseudoValue->Construct(Rectangle(100, 65, 500, 35), "Dindonpoilu");
+	pLabelPseudoValue->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelPseudoValue->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelPseudoValue->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelPseudoValue);
 
-	Label* pLabelAdd2 = new Label();
-	pLabelAdd2->Construct(Rectangle(5, 145, 350, 30), "app 5 - Ã©tage 5");
-	pLabelAdd2->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelAdd2->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelAdd2->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelAdd2);
+	Label* pLabelEmailTitle= new Label();
+	pLabelEmailTitle->Construct(Rectangle(5, 100, 500, 35), "Mail:");
+	pLabelEmailTitle->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelEmailTitle->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelEmailTitle->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelEmailTitle);
 
-	Label* pLabelAdd3 = new Label();
-	pLabelAdd3->Construct(Rectangle(5, 175, 350, 30), "5 avenue de l'OcÃ©an");
-	pLabelAdd3->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelAdd3->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelAdd3->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelAdd3);
+	Label* pLabelEmailValue= new Label();
+	pLabelEmailValue->Construct(Rectangle(100, 100, 500, 35), "dindonpoilu@bemyapp.com");
+	pLabelEmailValue->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelEmailValue->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelEmailValue->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelEmailValue);
 
-	Label* pLabelAdd4 = new Label();
-	pLabelAdd4->Construct(Rectangle(5, 205, 350, 30), "Le porge");
-	pLabelAdd4->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
-	pLabelAdd4->SetTextConfig(23, LABEL_TEXT_STYLE_NORMAL);
-	pLabelAdd4->SetTextColor(Color(0x33, 0x33, 0x33));
-	pScrollPanel->AddControl(*pLabelAdd4);
+	Label* pLabelPhoneTitle= new Label();
+	pLabelPhoneTitle->Construct(Rectangle(5, 135, 500, 35), "Phone:");
+	pLabelPhoneTitle->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelPhoneTitle->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelPhoneTitle->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelPhoneTitle);
 
+	Label* pLabelPhoneValue= new Label();
+	pLabelPhoneValue->Construct(Rectangle(100, 135, 500, 35), "06 12 34 56 78");
+	pLabelPhoneValue->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelPhoneValue->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelPhoneValue->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelPhoneValue);
 
-	/* DISPOZ */
+	/*
 	// Creates a Panel
 	Panel* pPanelDispoz = new Panel();
 	pPanelDispoz->Construct(Rectangle(5, 250, GetClientAreaBounds().width-15, 140));
@@ -164,7 +170,6 @@ InfoForm::OnInitializing(void)
 
 
 
-	/* PANIER */
 	// Creates a Panel
 	Panel* pPanelPanier = new Panel();
 	pPanelPanier->Construct(Rectangle(5, 395, GetClientAreaBounds().width-15, 170));
@@ -207,6 +212,7 @@ InfoForm::OnInitializing(void)
 	//EditField* pEdit = new EditField();
 	//pEdit->Construct(Rectangle(0, 100, 150, 80));
 	//pScrollPanel->AddControl(*pEdit);
+	*/
 
 	// Adds a ScrollPanel to the Form
 	AddControl(*pScrollPanel);
@@ -239,10 +245,14 @@ InfoForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 void
 InfoForm::OnFormBackRequested(Osp::Ui::Controls::Form& source)
 {
+	AppLog("Came here");
 	Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
 	FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
 
 	if(pFormMgr == null)
 			return;
-	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
+	Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
+	args->Add(*(new String("")));
+	args->Add(*(new String("-1")));
+	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
 }
