@@ -12,22 +12,29 @@ using namespace Osp::Base;
 using namespace Osp::Base::Collection;
 
 
-class Propoz {
+class Propoz :
+	public Object
+	{
 public:
 	Propoz();
 	virtual ~Propoz();
 
 
-	Propoz(ArrayList* aKey, IList* aValue);
+	void construct(IList* aKey, IList* aValue);
 
 
 	int id;
 	double x;
 	long date;
-	String* autre;
+	String volumes;
+	double nombres;
 	double y;
 	int domaine;
-	String* titre;
+	String titre;
+
+	String range;
+
+	String getCategory();
 };
 
 #endif /* PROPOZ_H_ */
