@@ -41,6 +41,7 @@ FormMgr::Initialize()
 void
 FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList* pArgs)
 {
+	AppLog("Dans le form MGR");
 	Frame *pFrame = Application::GetInstance()->GetAppFrame()->GetFrame();
 
 	switch(requestId)
