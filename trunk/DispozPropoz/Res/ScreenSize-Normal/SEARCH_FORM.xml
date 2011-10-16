@@ -24,32 +24,32 @@
         <layout height="72" mode="Landscape" width="585" x="50" y="156"/>
     </SearchBar>
     <Label id="IDC_LABEL1" parent="SEARCH_FORM">
-        <property BGBitmapPath="boisson.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="boissons.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="83" y="122"/>
         <layout height="66" mode="Landscape" width="218" x="516" y="78"/>
     </Label>
     <Label id="IDC_LABEL2" parent="SEARCH_FORM">
-        <property BGBitmapPath="epicerie.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="epicerie.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="263" y="122"/>
         <layout height="66" mode="Landscape" width="218" x="536" y="98"/>
     </Label>
     <Label id="IDC_LABEL3" parent="SEARCH_FORM">
-        <property BGBitmapPath="fruit et légume.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="fruit legumes.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="83" y="283"/>
         <layout height="66" mode="Landscape" width="218" x="536" y="98"/>
     </Label>
     <Label id="IDC_LABEL4" parent="SEARCH_FORM">
-        <property BGBitmapPath="produit laitier.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="produit laitier.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="263" y="283"/>
         <layout height="66" mode="Landscape" width="218" x="536" y="98"/>
     </Label>
     <Label id="IDC_LABEL5" parent="SEARCH_FORM">
-        <property BGBitmapPath="boisson.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="viande poisson oeuf.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="83" y="440"/>
         <layout height="66" mode="Landscape" width="218" x="536" y="98"/>
     </Label>
     <Label id="IDC_LABEL6" parent="SEARCH_FORM">
-        <property BGBitmapPath="boisson.jpg" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
+        <property BGBitmapPath="autres.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="263" y="440"/>
         <layout height="66" mode="Landscape" width="218" x="536" y="98"/>
     </Label>
