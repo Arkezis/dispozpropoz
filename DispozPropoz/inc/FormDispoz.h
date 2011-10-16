@@ -3,14 +3,20 @@
 
 #include <FBase.h>
 #include <FUi.h>
+#include "CALJsonParser.h"
+#include "Propoz.h"
+
+using namespace Osp::Base::Collection;
 
 class FormDispoz :
 	public Osp::Ui::Controls::Form,
 	public Osp::Ui::Controls::IListViewItemEventListener,
 	public Osp::Ui::Controls::IListViewItemProvider,
  	public Osp::Ui::ITouchEventListener,
-	public Osp::Ui::Controls::IFormBackEventListener,
-	public Osp::Ui::IActionEventListener
+	public Osp::Ui::IActionEventListener,
+	public CALJsonParser,
+	public Osp::Ui::Controls::IFormBackEventListener
+
 {
 
 // Construction
@@ -39,6 +45,11 @@ public:
 		virtual result OnInitializing(void);
 		virtual result OnTerminating(void);
 
+
+
+		//JSonFinish
+		void onJSONparsingTerminated();
+
 		// IListViewItemEventListener
 		virtual void OnListViewContextItemStateChanged(Osp::Ui::Controls::ListView &listView, int index, int elementId, Osp::Ui::Controls::ListContextItemStatus state);
 		virtual void OnListViewItemStateChanged(Osp::Ui::Controls::ListView &listView, int index, int elementId, Osp::Ui::Controls::ListItemStatus status);
@@ -57,6 +68,12 @@ public:
 	virtual void OnTouchMoved(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchPressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchReleased(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
+
+
+private:
+	CALJsonParser* __cjp;
+	ArrayList* items;
+	Propoz a;
 };
 
 #endif	//_FORMDISPOZ_H_

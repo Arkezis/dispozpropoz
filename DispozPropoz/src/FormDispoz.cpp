@@ -31,14 +31,13 @@ result
 FormDispoz::OnInitializing(void)
 {
 	result r = E_SUCCESS;
+	__cjp = new CALJsonParser();
+	__cjp->setJSONparserListener((Form*)this);
+	this->items = new ArrayList();
 
-
-	//Bitmap bitmap1;
-	//Image* bitmapDecoder = new Image();
-	//r=bitmapDecoder->Construct();
-	//unsigned int col = 0xDEC4BD; //222, 196, 189
-	// TODO: Add your initialization code here
-
+	String host(L"http://cilheo.fr");
+	String uri(L"http://cilheo.fr/propoz.php?action=list&X=254&Y=32&range=2555");
+	__cjp->PerformJSON(host, uri);
 
 	Header * pHeader = GetHeader();
 	if(pHeader){
@@ -174,7 +173,7 @@ FormDispoz::OnListViewContextItemStateChanged(Osp::Ui::Controls::ListView &listV
 int
 FormDispoz::GetItemCount(void)
 {
-	return 10;
+	return this->items->GetCount();
 }
 
 Osp::Ui::Controls::ListItemBase*
@@ -190,57 +189,22 @@ FormDispoz::CreateItem(int index, int itemWidth)
 
 	CustomItem* pItem = new CustomItem();
 
-	switch (index % 3)
-	{
-	case 0:
-		style = LIST_ANNEX_STYLE_NORMAL;
-		pItem->Construct(Osp::Graphics::Dimension(itemWidth,110), style);
-		//pItem->AddElement(Rectangle(10, 25, 100, 50), ID_LISTVIEW_TITLE, L"Home", true);
-		pItem->AddElement(Rectangle(5, 10, 200, 50), ID_LISTVIEW_TITLE, L"Dindonpoilu", 26, Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), true);
-		pItem->AddElement(Rectangle(5, 40, 200, 50), ID_LISTVIEW_DESC, L"Oeufs - Frigo", 26, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		pItem->AddElement(Rectangle(270, 30, 200, 50), ID_LISTVIEW_DIST, L"-250m", 30, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		//AppResource * res = Application::GetAppResource::GetInstance()->GetAppResource();
-		//Bitmap * pBitmap = res->GetBitmapN(L"loupe_80.png", BITMAP_PIXEL_FORMAT_ARGB8888);
-		pItem->AddElement(Rectangle(415, 35, 39, 46), ID_LISTVIEW_IMG, *bitmapSearch);
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_NORMAL, Color(0xDE, 0xC4, 0xBD));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_PRESSED, Color(0xF5, 0xB4, 0xA2));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_HIGHLIGHTED, Color(0xF5, 0xB4, 0xA2));
-		break;
-	case 1:
-		style = LIST_ANNEX_STYLE_NORMAL;
-		pItem->Construct(Osp::Graphics::Dimension(itemWidth,110), style);
-		pItem->AddElement(Rectangle(5, 10, 200, 50), ID_LISTVIEW_TITLE, L"Dindonpoilu", 26,Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), true);
-		pItem->AddElement(Rectangle(5, 40, 200, 50), ID_LISTVIEW_DESC, L"Oeufs - Frigo", 26, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		pItem->AddElement(Rectangle(270, 30, 200, 50), ID_LISTVIEW_DIST, L"-250m", 30, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		pItem->AddElement(Rectangle(415, 35, 39, 46), ID_LISTVIEW_IMG, *bitmapSearch);
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_NORMAL, Color(0xDE, 0xC4, 0xBD));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_PRESSED, Color(0xF5, 0xB4, 0xA2));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_HIGHLIGHTED, Color(0xF5, 0xB4, 0xA2));
-		break;
-	case 2:
-		style = LIST_ANNEX_STYLE_NORMAL;
-		pItem->Construct(Osp::Graphics::Dimension(itemWidth,110), style);
-		pItem->AddElement(Rectangle(5, 10, 200, 50), ID_LISTVIEW_TITLE, L"Dindonpoilu", 26, Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), true);
-		pItem->AddElement(Rectangle(5, 40, 200, 50), ID_LISTVIEW_DESC, L"Oeufs - Frigo", 26, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		pItem->AddElement(Rectangle(270, 30, 200, 50), ID_LISTVIEW_DIST, L"-250m", 30, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
-		pItem->AddElement(Rectangle(415, 35, 39, 46), ID_LISTVIEW_IMG, *bitmapSearch);
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_NORMAL, Color(0xDE, 0xC4, 0xBD));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_PRESSED, Color(0xF5, 0xB4, 0xA2));
-		pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_HIGHLIGHTED, Color(0xF5, 0xB4, 0xA2));
-		break;
-	/*case 1:
-		style = LIST_ANNEX_STYLE_MARK;
-		pItem->Construct(Osp::Graphics::Dimension(itemWidth,100), style);
-		//pItem->AddElement(Rectangle(10, 25, 100, 50), ID_LISTVIEW_TITLE, L"Msg", true);
-		break;
-	case 2:
-		style = LIST_ANNEX_STYLE_ONOFF_SLIDING;
-		pItem->Construct(Osp::Graphics::Dimension(itemWidth,100), style);
-		//pItem->AddElement(Rectangle(10, 25, 100, 50), ID_LISTVIEW_TITLE, L"Alarm", true);
-            break;*/
-        default:
-            break;
-    }
+	Propoz* propoz = (Propoz*)this->items->GetAt(index);
+
+	String titre = propoz->titre;
+	titre.Append(" - ");
+	titre.Append(propoz->nombres);
+	titre.Append(propoz->volumes);
+
+	style = LIST_ANNEX_STYLE_NORMAL;
+	pItem->Construct(Osp::Graphics::Dimension(itemWidth,110), style);
+	pItem->AddElement(Rectangle(5, 10, 200, 50), ID_LISTVIEW_TITLE, titre, 26, Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), Color(0xE9, 0x50, 0x0E), true);
+	pItem->AddElement(Rectangle(5, 40, 200, 50), ID_LISTVIEW_DESC, propoz->getCategory(), 26, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
+	pItem->AddElement(Rectangle(270, 30, 200, 50), ID_LISTVIEW_DIST, propoz->range, 30, Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), Color(0x33, 0x33, 0x33), true);
+	pItem->AddElement(Rectangle(415, 35, 39, 46), ID_LISTVIEW_IMG, *bitmapSearch);
+	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_NORMAL, Color(0xDE, 0xC4, 0xBD));
+	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_PRESSED, Color(0xF5, 0xB4, 0xA2));
+	pItem->SetBackgroundColor(LIST_ITEM_DRAWING_STATUS_HIGHLIGHTED, Color(0xF5, 0xB4, 0xA2));
 
 	return pItem;
 }
@@ -254,7 +218,34 @@ FormDispoz::DeleteItem(int index, Osp::Ui::Controls::ListItemBase* pItem, int it
 }
 
 
+void
+FormDispoz::onJSONparsingTerminated(){
+	this->items->RemoveAll(true);
+	this->__pList->UpdateList();
+	this->__pList->RequestRedraw(true);
+	ArrayList* aKey = __cjp->getKeyList();
+	IList* aValue = __cjp->getValueList();
 
+	int i=0;
+	while (i<aKey->GetCount()){
+
+		String* value = ((String*)aValue->GetAt(i));
+
+		if (value->CompareTo("Value is an Object")==0) {
+			Propoz* b = new Propoz();
+
+			b->construct(aKey->GetItemsN(i+1,9),aValue->GetItemsN(i+1,9));
+			this->items->Add(*b);
+		}
+		i++;
+	}
+
+
+
+
+	this->__pList->UpdateList();
+	this->__pList->RequestRedraw(true);
+}
 
 
 void
