@@ -116,6 +116,19 @@ SearchForm::OnInitializing(void)
 	if(pHeader){
 		pHeader->SetColor(Color(0x87,0xCD,0x4F));
 		pHeader->SetTitleText(L"Dispoz'");
+
+		ButtonItem buttonItem;
+		buttonItem.Construct(BUTTON_ITEM_STYLE_ICON, ID_HEADER_ABOUT_BUTTON);
+		AppResource *pAppResource = Application::GetInstance()->GetAppResource();
+		Bitmap* __pBitmap = null;
+
+		//TODO: use another icon instead of this
+		if (pAppResource)
+			__pBitmap = pAppResource->GetBitmapN(L"boisson.jpg", BITMAP_PIXEL_FORMAT_ARGB8888);
+		buttonItem.SetIcon(BUTTON_ITEM_STATUS_NORMAL, __pBitmap);
+		pHeader->SetButton(BUTTON_POSITION_RIGHT, buttonItem);
+		pHeader->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0x87,0xCD,0x4F));
+		pHeader->AddActionEventListener(*this);
 	}
 	return r;
 }
@@ -170,6 +183,9 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
 
 	}
+	case ID_HEADER_ABOUT_BUTTON:
+		AppLog("Not done yet: Handler for the header info button!");
+		break;
 	default:
 		break;
 	}

@@ -44,6 +44,7 @@ private:
 	static const int ID_CHECKBUTTON_6 = 206;
 	static const int ID_BUTTON_SEARCH = 301;
 	static const int ID_FOOTERITEM1 = 401;
+	static const int ID_HEADER_ABOUT_BUTTON = 501;
 
 
 	Osp::Ui::Controls::SearchBar *pSearchBar;
