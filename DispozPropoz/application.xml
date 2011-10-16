@@ -8,10 +8,10 @@
     <Vendor/>
     <Description/>
     <Icons>
-        <MainMenu>DispozPropoz_type4.png<Type1/>
-            <Type2>DispozPropoz_type2.png</Type2>
-            <Type3>DispozPropoz_type3.png</Type3>
-            <Type4>DispozPropoz_type4.png</Type4>
+        <MainMenu>favicon.png<Type1/>
+            <Type2>favicon_type2.png</Type2>
+            <Type3>favicon_type3.png</Type3>
+            <Type4>favicon.png</Type4>
         </MainMenu>
         <Setting/>
         <Ticker/>
