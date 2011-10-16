@@ -72,7 +72,7 @@ DispozPropoz::OnAppInitializing(AppRegistry& appRegistry)
 		r = Application::GetInstance()->GetAppFrame()->GetFrame()->AddControl(*pFormMgr);
 		TryCatch(r == E_SUCCESS, , GetErrorMessage(r));
 		// on définit le Form de départ
-		pFormMgr->SendUserEvent(FormMgr::REQUEST_SEARCHDISPOZ,null);
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ,null);
 	}
 	return true;
 

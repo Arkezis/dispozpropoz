@@ -1,6 +1,8 @@
 #include "FormMgr.h"
 #include "Form1.h"
 #include "SearchForm.h"
+#include "FormPropoz.h"
+#include "FormDispoz.h"
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::App;
@@ -45,7 +47,7 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 	{
 		case REQUEST_LISTDISPOZ:
 		{
-			Form1 *listDispozForm = new Form1();
+			FormDispoz *listDispozForm = new FormDispoz();
 			listDispozForm->Initialize();
 			pFrame->AddControl(*listDispozForm);
 			pFrame->SetCurrentForm(*listDispozForm);
@@ -71,16 +73,14 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 		break;
 		case REQUEST_PROPOZ:
 		{
-			/*
-			Manageusers* manageUsers = new Manageusers();
-			manageUsers->Initialize();
-			pFrame->AddControl(*manageUsers);
-			pFrame->SetCurrentForm(*manageUsers);
-			manageUsers->RequestRedraw();
+			FormPropoz* propozForm = new FormPropoz();
+			propozForm->Initialize();
+			pFrame->AddControl(*propozForm);
+			pFrame->SetCurrentForm(*propozForm);
+			propozForm->RequestRedraw();
 			if (null != __prevForm)
 				pFrame->RemoveControl(*__prevForm);
-			__prevForm = manageUsers;
-		*/
+			__prevForm = propozForm;
 		}
 		break;
 		case REQUEST_PROFILE:
