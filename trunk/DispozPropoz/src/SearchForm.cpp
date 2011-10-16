@@ -182,7 +182,9 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	break;
 	case ID_HEADER_ABOUT_BUTTON:
 	{
-		msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
+		//msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
+		String ABOUT_STRING = "Cette application a été développée dans le cadre du week-end BeMyApp Bada avec le support de Samsung.\nSuivez nous sur Twitter et Facebook!\nEquipe de développement-\nPorteur d'idée: Emilie ROCHER \nDéveloppement: Cyril ALIX, Tom DUBIN, Mathieu Cilheo, Romain PICHARD, Sathish VJ\nDesign: Sophie BAI, Marine GIRARD";
+		msgBoxAbout.Construct("About",ABOUT_STRING,MSGBOX_STYLE_OK ,0);
 		int modalResult = 0;
 		msgBoxAbout.ShowAndWait(modalResult);
 		break;
