@@ -3,6 +3,7 @@
 #include "SearchForm.h"
 #include "FormPropoz.h"
 #include "FormDispoz.h"
+#include "InfoForm.h"
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::App;
@@ -95,16 +96,16 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 		break;
 		case REQUEST_PROFILE:
 			{
-				/*
-				Manageusers* manageUsers = new Manageusers();
-				manageUsers->Initialize();
-				pFrame->AddControl(*manageUsers);
-				pFrame->SetCurrentForm(*manageUsers);
-				manageUsers->RequestRedraw();
+
+				InfoForm* profileForm = new InfoForm();
+				profileForm->Initialize();
+				pFrame->AddControl(*profileForm);
+				pFrame->SetCurrentForm(*profileForm);
+				profileForm->RequestRedraw();
 				if (null != __prevForm)
 					pFrame->RemoveControl(*__prevForm);
-				__prevForm = manageUsers;
-			*/
+				__prevForm = profileForm;
+
 			}
 			break;
 		case REQUEST_DETAILSDISPOZ:
