@@ -71,8 +71,12 @@ DispozPropoz::OnAppInitializing(AppRegistry& appRegistry)
 		// on ajoute à la frame le FormMgr
 		r = Application::GetInstance()->GetAppFrame()->GetFrame()->AddControl(*pFormMgr);
 		TryCatch(r == E_SUCCESS, , GetErrorMessage(r));
-		// on définit le Form de départ
-		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ,null);
+		// on définit le Form de départ et on ne donne pas de paramètres (on affiche tout)
+		Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
+		args->Add(*(new String("")));
+		args->Add(*(new String("-1")));
+
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ,args);
 	}
 	return true;
 

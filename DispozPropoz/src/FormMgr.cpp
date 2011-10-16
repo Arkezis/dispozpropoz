@@ -48,8 +48,17 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 	{
 		case REQUEST_LISTDISPOZ:
 		{
+			AppLog("C'est parti pour la liste");
 			FormDispoz *listDispozForm = new FormDispoz();
 			listDispozForm->Initialize();
+			AppLog("Avant args");
+			if(pArgs!=null) {
+				String* arg1 = ((String*)pArgs->GetAt(0));
+				String* arg2 = ((String*)pArgs->GetAt(1));
+
+				listDispozForm->populateWithParams(arg1,arg2);
+			}
+			AppLog("Après args");
 			pFrame->AddControl(*listDispozForm);
 			pFrame->SetCurrentForm(*listDispozForm);
 			pFrame->RequestRedraw();

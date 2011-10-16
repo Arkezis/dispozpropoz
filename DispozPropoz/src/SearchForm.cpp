@@ -31,12 +31,7 @@ SearchForm::OnInitializing(void)
 {
 	result r = E_SUCCESS;
 
-	pSearchBar = static_cast<SearchBar *>(GetControl(L"IDC_SEARCHBAR1"));
-	if (pSearchBar != null)
-	{
-		//pSearchBar->SetActionId(ID_SEARCHBAR);
-		pSearchBar->AddActionEventListener(*this);
-	}
+	pSearchBar = static_cast<TextBox *>(GetControl(L"IDC_SEARCHBAR1"));
 
 	pCheckButton1 = static_cast<CheckButton *>(GetControl(L"IDC_CHECKBUTTON1"));
 	if (pCheckButton1 != null)
@@ -149,12 +144,6 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 {
 	switch(actionId)
 	{
-	case ID_SEARCHBAR:
-		{
-
-		}
-		break;
-
 	case ID_CHECKBUTTON_1:
 	{
 		//if( static_cast<CheckButton>(source).IsSelected()== true)   AppLog("OK Button is clicked! \n");
@@ -165,30 +154,29 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	{
 		Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
 		categorySelected=-1;
-		AppLog("Jm'arrete ici 1");
-		if(pCheckButton1->IsSelected()) categorySelected =0;
-		else if(pCheckButton2->IsSelected()) categorySelected =1;
-		else if(pCheckButton3->IsSelected()) categorySelected =2;
-		else if(pCheckButton4->IsSelected()) categorySelected =3;
-		else if(pCheckButton5->IsSelected()) categorySelected =4;
-		else if(pCheckButton6->IsSelected()) categorySelected =5;
-		AppLog("Jm'arrête ici 1 bis");
-		textEntered = pSearchBar->GetText();
-		AppLog("Jm'arrete ici 2");
+		textEntered="";
+		AppLog("Coucou1");
+		/* les numéros suivants sont relatifs à ce qui est spécifié dans la classe Propoz */
+		if(pCheckButton1->IsSelected()) categorySelected =5;
+		else if(pCheckButton2->IsSelected()) categorySelected =3;
+		else if(pCheckButton3->IsSelected()) categorySelected =1;
+		else if(pCheckButton4->IsSelected()) categorySelected =0;
+		else if(pCheckButton5->IsSelected()) categorySelected =2;
+		else if(pCheckButton6->IsSelected()) categorySelected =4;
+		AppLog("Coucou2");
+		//textEntered = pSearchBar->GetText();
+		AppLog("Coucou2 bis");
 
 		Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
 		FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
 		if(pFormMgr == null)	return;
-		AppLog("Jm'arrete ici 3");
+		AppLog("Coucou3");
 
-		if(textEntered.CompareTo("")>0 || textEntered.CompareTo("")<0 )	args->Add(textEntered);
-		if(categorySelected.CompareTo(-1)>0){
-			args->Add(categorySelected.ToString());
-			AppLog("Search categ : %d \n",categorySelected.ToInt());
-		}
-		AppLog("Jm'arrete ici");
-		if(args->GetCount()>0)	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
-		else pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
+		args->Add(*(new String(textEntered)));
+		args->Add(*(new String(categorySelected.ToString())));
+
+		AppLog("Search categ : %d \n",categorySelected.ToInt());
+		pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
 
 	}
 	break;
@@ -213,7 +201,10 @@ SearchForm::OnFormBackRequested(Osp::Ui::Controls::Form& source)
 
 	if(pFormMgr == null)
 			return;
-	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
+	Osp::Base::Collection::IList* args = new Osp::Base::Collection::LinkedList();
+	args->Add(*(new String("")));
+	args->Add(*(new String("-1")));
+	pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, args);
 }
 
 void

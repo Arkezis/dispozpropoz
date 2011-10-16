@@ -45,7 +45,7 @@ public:
 		virtual result OnInitializing(void);
 		virtual result OnTerminating(void);
 
-
+		void populateWithParams(String* arg1,String* arg2);
 
 		//JSonFinish
 		void onJSONparsingTerminated();

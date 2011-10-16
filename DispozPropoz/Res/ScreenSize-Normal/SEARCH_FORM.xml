@@ -18,11 +18,6 @@
         <property BGBitmapPath="" color="" colorOpacity="100" descriptionText="" descriptionTextColor="" disabledButtonColor="" disabledButtonColorOpacity="100" disabledButtonTextColor="" disabledItemColor="" disabledItemColorOpacity="100" disabledItemTextColor="" headerStyle="HEADER_STYLE_TITLE" highlightedButtonColor="" highlightedButtonColorOpacity="100" highlightedButtonTextColor="" highlightedItemColor="" highlightedItemColorOpacity="100" highlightedItemTextColor="" normalButtonColor="" normalButtonColorOpacity="100" normalButtonTextColor="" normalItemColor="" normalItemColorOpacity="100" normalItemTextColor="" pressedButtonColor="" pressedButtonColorOpacity="100" pressedButtonTextColor="" pressedItemColor="" pressedItemColorOpacity="100" pressedItemTextColor="" selectedItemColor="" selectedItemColorOpacity="100" selectedItemTextColor="" titleIconPath="" titleText="" titleTextColor=""/>
         <itemSet/>
     </Header>
-    <SearchBar id="IDC_SEARCHBAR1" parent="SEARCH_FORM">
-        <property backgroundBitmapPath="" buttonActionId="0" buttonText="" color="#E5CECB" colorOpacity="100" disabledButtonColor="" disabledButtonTextColor="" disabledSearchFieldColor="" disabledSearchFieldTextColor="" ellipsisPosition="ELLIPSIS_POSITION_END" guideText="" guideTextColor="" highlightedButtonColor="" highlightedButtonTextColor="" highlightedSearchFieldColor="" highlightedSearchFieldTextColor="" keypadAction="KEYPAD_ACTION_ENTER" limitLength="500" lowerCaseMode="FALSE" normalButtonColor="" normalButtonTextColor="" normalSearchFieldColor="" normalSearchFieldTextColor="" pressedButtonColor="" pressedButtonTextColor="" searchFieldTextSize="38" showSearchBarButton="TRUE" text=""/>
-        <layout height="91" mode="Portrait" width="480" x="0" y="0"/>
-        <layout height="72" mode="Landscape" width="585" x="50" y="156"/>
-    </SearchBar>
     <Label id="IDC_LABEL1" parent="SEARCH_FORM">
         <property BGBitmapPath="boissons.png" BGColor="" BGColorOpacity="0" hAlign="ALIGN_LEFT" text="" textColor="" textSize="42" textStyle="LABEL_TEXT_STYLE_NORMAL" vAlign="ALIGN_TOP"/>
         <layout height="141" mode="Portrait" width="136" x="83" y="122"/>
@@ -83,4 +78,9 @@
         <layout height="140" mode="Portrait" style="CHECK_BUTTON_STYLE_RADIO" width="141" x="260" y="284"/>
         <layout height="90" mode="Landscape" style="CHECK_BUTTON_STYLE_RADIO" width="251" x="36" y="50"/>
     </CheckButton>
+    <EditField id="IDC_EDITFIELD1" parent="SEARCH_FORM">
+        <property GroupStyle="GROUP_STYLE_NONE" InputStyle="INPUT_STYLE_FULLSCREEN" KeypadEnabled="TRUE" disabledBGBitmapPath="" disabledColor="" disabledColorOpacity="100" disabledTextColor="" ellipsisPosition="ELLIPSIS_POSITION_END" enableClear="TRUE" guideText="" guideTextColor="" highlightedBGBitmapPath="" highlightedColor="" highlightedColorOpacity="100" highlightedTextColor="" horizontalMargin="10" keypadAction="KEYPAD_ACTION_ENTER" limitLength="100" linkTextColor="" lowerCaseMode="FALSE" normalBGBitmapPath="" normalColor="#E5CEE6" normalColorOpacity="100" normalTextColor="" pressedBGBitmapPath="" pressedColor="" pressedColorOpacity="100" text="" textHorizontalAlignment="ALIGNMENT_LEFT" textSize="38" titleStyle="EDIT_FIELD_TITLE_STYLE_NONE" titleText="" titleTextColor="" verticalMargin="10" viewMode="FALSE"/>
+        <layout height="106" mode="Portrait" style="EDIT_FIELD_STYLE_NORMAL" width="480" x="0" y="0"/>
+        <layout height="63" mode="Landscape" style="EDIT_FIELD_STYLE_NORMAL" width="266" x="48" y="33"/>
+    </EditField>
 </Scene>
