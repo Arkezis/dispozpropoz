@@ -38,6 +38,8 @@ protected:
 	static const int ID_BUTTON_CLOSE_POPUP = 301;
 	Osp::Ui::Controls::ListView* __pList;
 	Osp::Ui::Controls::MessageBox msgBoxMap;
+	static const int ID_HEADER_ABOUT_BUTTON = 501;
+	Osp::Ui::Controls::MessageBox msgBoxAbout;
 
 public:
 		virtual result OnInitializing(void);

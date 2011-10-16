@@ -125,7 +125,7 @@ SearchForm::OnInitializing(void)
 
 		//TODO: use another icon instead of this
 		if (pAppResource)
-			__pBitmap = pAppResource->GetBitmapN(L"boisson.jpg", BITMAP_PIXEL_FORMAT_ARGB8888);
+			__pBitmap = pAppResource->GetBitmapN(L"info.png", BITMAP_PIXEL_FORMAT_ARGB8888);
 		buttonItem.SetIcon(BUTTON_ITEM_STATUS_NORMAL, __pBitmap);
 		pHeader->SetButton(BUTTON_POSITION_RIGHT, buttonItem);
 		pHeader->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0x87,0xCD,0x4F));
