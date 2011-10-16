@@ -27,7 +27,7 @@ public:
 	double x;
 	long date;
 	String volumes;
-	double nombres;
+	int nombres;
 	double y;
 	int domaine;
 	String titre;

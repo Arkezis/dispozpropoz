@@ -232,10 +232,6 @@ FormDispoz::onJSONparsingTerminated(){
 		}
 		i++;
 	}
-
-
-
-
 	this->__pList->UpdateList();
 	this->__pList->RequestRedraw(true);
 }
