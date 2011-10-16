@@ -49,8 +49,14 @@ FormDispoz::OnInitializing(void)
 	if(pFooter)
 	{
 		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
-		//pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
-	//	pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
 		FooterItem  footerItemCreate;
 		footerItemCreate.Construct(ID_FOOTERITEM_MAP);
 		footerItemCreate.SetText("Carte");
@@ -80,17 +86,6 @@ FormDispoz::OnInitializing(void)
 	__pList->SetItemDividerColor(Color(0xF7, 0xAE, 0x83));
 	AddControl(*__pList);
 
-	 // Create the map's popup
-	__pPopup = new Popup();
-	Dimension dim(300, 400);
-	__pPopup->Construct(true, dim);
-	__pPopup->SetTitleText(L"Carte des dispoz'");
-	 // Create a button to close the Popup.
-	Button* pBtnClose = new Button();
-	pBtnClose->Construct(Rectangle(10, 10, 250, 60), L"Close Popup");
-	pBtnClose->SetActionId(ID_BUTTON_CLOSE_POPUP);
-	pBtnClose->AddActionEventListener(*this);
-	__pPopup->AddControl(*pBtnClose);
 
 	return r;
 }
@@ -119,8 +114,6 @@ FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 			msgBoxMap.Construct("Carte des dispoz'","Cette fonctionnalité n'est pas disponible pour l'instant",MSGBOX_STYLE_OK ,0);
 			int modalResult = 0;
 			msgBoxMap.ShowAndWait(modalResult);
-			//__pPopup->SetShowState(true);
-			//__pPopup->Show();
 		}
 		break;
 		case ID_FOOTERITEM_PROPOZ:
