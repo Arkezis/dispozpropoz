@@ -9,6 +9,7 @@ class FormDispoz :
 	public Osp::Ui::Controls::IListViewItemEventListener,
 	public Osp::Ui::Controls::IListViewItemProvider,
  	public Osp::Ui::ITouchEventListener,
+	public Osp::Ui::Controls::IFormBackEventListener,
 	public Osp::Ui::IActionEventListener
 {
 
@@ -28,7 +29,11 @@ protected:
 	static const int ID_FOOTERITEM_PROPOZ= ID_FOOTERITEM_MAP+1;
 	static const int ID_FOOTERITEM_DISPOZ= ID_FOOTERITEM_PROPOZ+1;
 	static const int ID_FOOTERITEM_INFO= ID_FOOTERITEM_DISPOZ+1;
+	static const int ID_BUTTON_CLOSE_POPUP = 301;
 	Osp::Ui::Controls::ListView* __pList;
+	Osp::Ui::Controls::Popup* __pPopup;
+	Osp::Ui::Controls::Popup* _pPopup;
+	Osp::Ui::Controls::MessageBox msgBoxMap;
 
 public:
 		virtual result OnInitializing(void);
@@ -44,6 +49,7 @@ public:
 		virtual bool  DeleteItem (int index, Osp::Ui::Controls::ListItemBase *pItem, int itemWidth);
 		virtual int GetItemCount(void);
 		virtual void OnActionPerformed(const Osp::Ui::Control& source, int actionId);
+		virtual void OnFormBackRequested(Osp::Ui::Controls::Form& source);
 	virtual void OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchFocusIn(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
 	virtual void OnTouchFocusOut(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);

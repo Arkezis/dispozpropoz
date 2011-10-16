@@ -22,7 +22,7 @@ bool
 FormDispoz::Initialize()
 {
 	// Construct an XML form
-	Construct(L"IDF_FORM1");
+	Construct(L"FormDispoz");
 
 	return true;
 }
@@ -38,43 +38,60 @@ FormDispoz::OnInitializing(void)
 	//r=bitmapDecoder->Construct();
 	//unsigned int col = 0xDEC4BD; //222, 196, 189
 	// TODO: Add your initialization code here
-	__pList = new ListView();
-	__pList->Construct(Rectangle(0, 0, GetClientAreaBounds().width, GetClientAreaBounds().height /*- 200*/), true, false);
-	__pList->SetItemProvider(*this);
-	__pList->AddListViewItemEventListener(*this);
-	__pList->SetItemDividerColor(Color(0xF7, 0xAE, 0x83));
-	AddControl(*__pList);
 
-	Footer* pFooter = GetFooter();
-	if(pFooter)
-	{
-		AppLog("Cheupi a un petit sexe");
-		FooterItem  footerItemCreate;
-		footerItemCreate.Construct(ID_FOOTERITEM_MAP);
-		footerItemCreate.SetText("Carte");
-		FooterItem  footerItemCreate2;
-		footerItemCreate2.Construct(ID_FOOTERITEM_PROPOZ);
-		footerItemCreate2.SetText("Propoz'");
-		FooterItem  footerItemCreate3;
-		footerItemCreate3.Construct(ID_FOOTERITEM_DISPOZ);
-		footerItemCreate3.SetText("Dispoz'");
-		FooterItem  footerItemCreate4;
-		footerItemCreate4.Construct(ID_FOOTERITEM_INFO);
-		footerItemCreate4.SetText("Info");
-		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
-		//pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
-		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
-		pFooter->AddItem(footerItemCreate);
-		pFooter->SetBackButton();
-		pFooter->AddActionEventListener(*this);
-		//SetFormBackEventListener(this);
-	}
 
 	Header * pHeader = GetHeader();
 	if(pHeader){
 		pHeader->SetColor(Color(0x87,0xCD,0x4F));
 		pHeader->SetTitleText(L"Dispoz'");
 	}
+
+	Footer* pFooter = GetFooter();
+	if(pFooter)
+	{
+		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
+		//pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+	//	pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		FooterItem  footerItemCreate;
+		footerItemCreate.Construct(ID_FOOTERITEM_MAP);
+		footerItemCreate.SetText("Carte");
+		pFooter->AddItem(footerItemCreate);
+		FooterItem  footerItemCreate2;
+		footerItemCreate2.Construct(ID_FOOTERITEM_PROPOZ);
+		footerItemCreate2.SetText("Propoz'");
+		pFooter->AddItem(footerItemCreate2);
+		FooterItem  footerItemCreate3;
+		footerItemCreate3.Construct(ID_FOOTERITEM_DISPOZ);
+		footerItemCreate3.SetText("Dispoz'");
+		pFooter->AddItem(footerItemCreate3);
+		FooterItem  footerItemCreate4;
+		footerItemCreate4.Construct(ID_FOOTERITEM_INFO);
+		footerItemCreate4.SetText("Info");
+		pFooter->AddItem(footerItemCreate4);
+		pFooter->AddActionEventListener(*this);
+	}
+
+
+	__pList = new ListView();
+	__pList->Construct(Rectangle(0, 0, GetClientAreaBounds().width, GetClientAreaBounds().height-pFooter->GetHeight()), true, false);
+
+	__pList->SetTextOfEmptyList(L"Chargement...");
+	__pList->SetItemProvider(*this);
+	__pList->AddListViewItemEventListener(*this);
+	__pList->SetItemDividerColor(Color(0xF7, 0xAE, 0x83));
+	AddControl(*__pList);
+
+	 // Create the map's popup
+	__pPopup = new Popup();
+	Dimension dim(300, 400);
+	__pPopup->Construct(true, dim);
+	__pPopup->SetTitleText(L"Carte des dispoz'");
+	 // Create a button to close the Popup.
+	Button* pBtnClose = new Button();
+	pBtnClose->Construct(Rectangle(10, 10, 250, 60), L"Close Popup");
+	pBtnClose->SetActionId(ID_BUTTON_CLOSE_POPUP);
+	pBtnClose->AddActionEventListener(*this);
+	__pPopup->AddControl(*pBtnClose);
 
 	return r;
 }
@@ -89,6 +106,10 @@ FormDispoz::OnTerminating(void)
 	return r;
 }
 
+void FormDispoz::OnFormBackRequested(Osp::Ui::Controls::Form& source){
+
+}
+
 void
 FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 {
@@ -96,7 +117,11 @@ FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 	{
 		case ID_FOOTERITEM_MAP:
 		{
-			// kedal ?
+			msgBoxMap.Construct("Carte des dispoz'","Cette fonctionnalité n'est pas disponible pour l'instant",MSGBOX_STYLE_OK ,0);
+			int modalResult = 0;
+			msgBoxMap.ShowAndWait(modalResult);
+			//__pPopup->SetShowState(true);
+			//__pPopup->Show();
 		}
 		break;
 		case ID_FOOTERITEM_PROPOZ:
