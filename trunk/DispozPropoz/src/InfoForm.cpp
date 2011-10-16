@@ -143,11 +143,10 @@ InfoForm::OnInitializing(void)
 	pScrollPanel->AddControl(*pLabelPhoneValue);
 
 
-	/*
 	//Mes Dispoz
 	// Creates a Panel
 	Panel* pPanelMesDispoz= new Panel();
-	pPanelMesDispoz->Construct(Rectangle(5, 205, GetClientAreaBounds().width-15, 540));
+	pPanelMesDispoz->Construct(Rectangle(5, 215, GetClientAreaBounds().width-15, 500));
 	pPanelMesDispoz->SetBackgroundColor(Color(0xE5, 0xCE, 0xCB));
 	pScrollPanel->AddControl(*pPanelMesDispoz);
 
@@ -155,8 +154,72 @@ InfoForm::OnInitializing(void)
 	pLabelTitleMesDispoz ->Construct(Rectangle(5, 210, 500, 30), "Mes Dispoz");
 	pLabelTitleMesDispoz ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
 	pLabelTitleMesDispoz ->SetTextConfig(23, LABEL_TEXT_STYLE_ITALIC);
+	pLabelTitleMesDispoz ->SetTextColor(Color(0xE9, 0x50, 0x0E));
 	pScrollPanel->AddControl(*pLabelTitleMesDispoz );
-	*/
+
+	Label* pLabelDispo1Date = new Label();
+	pLabelDispo1Date ->Construct(Rectangle(5, 245, 500, 35), "15 Oct 2011");
+	pLabelDispo1Date ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo1Date ->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo1Date ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo1Date);
+
+	Label* pLabelDispo1Rating = new Label();
+	pLabelDispo1Rating ->Construct(Rectangle(305, 245, 500, 35), "*****");
+	pLabelDispo1Rating ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo1Rating ->SetTextConfig(50, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo1Rating ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo1Rating );
+
+	Label* pLabelDispo1Item = new Label();
+	//pLabelPhoneValue->Construct(Rectangle(100, 145, 500, 35), "06 12 34 56 78");
+	pLabelDispo1Item ->Construct(Rectangle(25, 280, 500, 35), "Machine à café");
+	pLabelDispo1Item ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo1Item ->SetTextConfig(30, LABEL_TEXT_STYLE_ITALIC);
+	pLabelDispo1Item ->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelDispo1Item);
+
+	Label* pLabelDispo2Date = new Label();
+	pLabelDispo2Date ->Construct(Rectangle(5, 325, 500, 35), "14 Oct 2011");
+	pLabelDispo2Date ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo2Date ->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo2Date ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo2Date);
+
+	Label* pLabelDispo2Rating = new Label();
+	pLabelDispo2Rating ->Construct(Rectangle(305, 325, 500, 35), "****");
+	pLabelDispo2Rating ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo2Rating ->SetTextConfig(50, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo2Rating ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo2Rating );
+
+	Label* pLabelDispo2Item = new Label();
+	pLabelDispo2Item ->Construct(Rectangle(25, 360, 500, 35), "Assiettes en carton");
+	pLabelDispo2Item ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo2Item ->SetTextConfig(30, LABEL_TEXT_STYLE_ITALIC);
+	pLabelDispo2Item ->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelDispo2Item);
+
+	Label* pLabelDispo3Date = new Label();
+	pLabelDispo3Date ->Construct(Rectangle(5, 405, 500, 35), "12 Oct 2011");
+	pLabelDispo3Date ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo3Date ->SetTextConfig(30, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo3Date ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo3Date);
+
+	Label* pLabelDispo3Rating = new Label();
+	pLabelDispo3Rating ->Construct(Rectangle(305, 405, 500, 35), "*****");
+	pLabelDispo3Rating ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo3Rating ->SetTextConfig(50, LABEL_TEXT_STYLE_NORMAL);
+	pLabelDispo3Rating ->SetTextColor(Color(0xE9, 0x50, 0x0E));
+	pScrollPanel->AddControl(*pLabelDispo3Rating );
+
+	Label* pLabelDispo3Item = new Label();
+	pLabelDispo3Item ->Construct(Rectangle(25, 440, 500, 35), "Casserole");
+	pLabelDispo3Item ->SetTextHorizontalAlignment(ALIGNMENT_LEFT);
+	pLabelDispo3Item ->SetTextConfig(30, LABEL_TEXT_STYLE_ITALIC);
+	pLabelDispo3Item ->SetTextColor(Color(0x33, 0x33, 0x33));
+	pScrollPanel->AddControl(*pLabelDispo3Item);
 
 	// Adds a ScrollPanel to the Form
 	AddControl(*pScrollPanel);
