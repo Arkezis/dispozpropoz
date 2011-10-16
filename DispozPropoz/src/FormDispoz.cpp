@@ -31,13 +31,7 @@ result
 FormDispoz::OnInitializing(void)
 {
 	result r = E_SUCCESS;
-	//__cjp = new CALJsonParser();
-	//__cjp->setJSONparserListener((Form*)this);
 	this->items = new ArrayList();
-
-	String host(L"http://cilheo.fr");
-	String uri(L"http://cilheo.fr/propoz.php?action=list&X=254&Y=32&range=2555");
-	//__cjp->PerformJSON(host, uri);
 
 	Footer* pFooter = GetFooter();
 	if(pFooter)
@@ -271,7 +265,7 @@ FormDispoz::DeleteItem(int index, Osp::Ui::Controls::ListItemBase* pItem, int it
 
 void
 FormDispoz::onJSONparsingTerminated(){
-	this->items->RemoveAll(true);
+	this->items = new ArrayList();
 	this->__pList->UpdateList();
 	this->__pList->RequestRedraw(true);
 	ArrayList* aKey = __cjp->getKeyList();
