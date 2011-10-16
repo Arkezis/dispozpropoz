@@ -67,8 +67,6 @@ CALJsonParser::TraverseFunction( IJsonValue *pValue )
 						pMapEnum->GetKey( key );
 						String *pListKey = new String(*key);
 
-						AppLogDebug("     String = %s", pListKey->GetPointer());
-
 						__pJsonKeyList->Add(*pListKey);
 
 						String *pStr = null;

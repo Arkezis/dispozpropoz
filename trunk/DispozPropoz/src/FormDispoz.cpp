@@ -31,13 +31,13 @@ result
 FormDispoz::OnInitializing(void)
 {
 	result r = E_SUCCESS;
-	__cjp = new CALJsonParser();
-	__cjp->setJSONparserListener((Form*)this);
+	//__cjp = new CALJsonParser();
+	//__cjp->setJSONparserListener((Form*)this);
 	this->items = new ArrayList();
 
 	String host(L"http://cilheo.fr");
 	String uri(L"http://cilheo.fr/propoz.php?action=list&X=254&Y=32&range=2555");
-	__cjp->PerformJSON(host, uri);
+	//__cjp->PerformJSON(host, uri);
 
 	Footer* pFooter = GetFooter();
 	if(pFooter)
@@ -101,6 +101,28 @@ FormDispoz::OnInitializing(void)
 	}
 
 	return r;
+}
+
+void FormDispoz::populateWithParams(String* arg1, String* arg2){
+	AppLog("I've got params !!");
+
+	String add = "";
+	if (arg2->CompareTo("-1")){
+		add = "&category=";
+		add.Append(arg2->GetPointer());
+	}
+	String* uri = new String("http://cilheo.fr/propoz.php?action=list&X=254&Y=32&range=2555");
+	uri->Append(add);
+	//uri->Append("&contains='");
+//	uri->Append(arg1->GetPointer());
+	//uri->Append("'");
+	String host(L"http://cilheo.fr");
+
+	AppLog("%ls",uri->GetPointer());
+
+	__cjp = new CALJsonParser();
+	__cjp->setJSONparserListener((Form*)this);
+	__cjp->PerformJSON(host, *uri);
 }
 
 result
@@ -242,6 +264,7 @@ FormDispoz::onJSONparsingTerminated(){
 	IList* aValue = __cjp->getValueList();
 
 	int i=0;
+	AppLog("nombre recu = %d",aKey->GetCount());
 	while (i<aKey->GetCount()){
 
 		String* value = ((String*)aValue->GetAt(i));

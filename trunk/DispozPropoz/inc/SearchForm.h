@@ -47,7 +47,7 @@ private:
 	static const int ID_HEADER_ABOUT_BUTTON = 501;
 
 
-	Osp::Ui::Controls::SearchBar *pSearchBar;
+	Osp::Ui::Controls::TextBox *pSearchBar;
 	Osp::Ui::Controls::CheckButton *pCheckButton1;
 	Osp::Ui::Controls::CheckButton *pCheckButton2;
 	Osp::Ui::Controls::CheckButton *pCheckButton3;
