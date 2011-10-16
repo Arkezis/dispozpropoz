@@ -39,12 +39,6 @@ FormDispoz::OnInitializing(void)
 	String uri(L"http://cilheo.fr/propoz.php?action=list&X=254&Y=32&range=2555");
 	__cjp->PerformJSON(host, uri);
 
-	Header * pHeader = GetHeader();
-	if(pHeader){
-		pHeader->SetColor(Color(0x87,0xCD,0x4F));
-		pHeader->SetTitleText(L"Dispoz'");
-	}
-
 	Footer* pFooter = GetFooter();
 	if(pFooter)
 	{
@@ -86,6 +80,25 @@ FormDispoz::OnInitializing(void)
 	__pList->SetItemDividerColor(Color(0xF7, 0xAE, 0x83));
 	AddControl(*__pList);
 
+
+	Header * pHeader = GetHeader();
+	if(pHeader){
+		pHeader->SetColor(Color(0x87,0xCD,0x4F));
+		pHeader->SetTitleText(L"Dispoz'");
+
+		ButtonItem buttonItem;
+		buttonItem.Construct(BUTTON_ITEM_STYLE_ICON, ID_HEADER_ABOUT_BUTTON);
+		AppResource *pAppResource = Application::GetInstance()->GetAppResource();
+		Bitmap* __pBitmap = null;
+
+		//TODO: use another icon instead of this
+		if (pAppResource)
+			__pBitmap = pAppResource->GetBitmapN(L"info.png", BITMAP_PIXEL_FORMAT_ARGB8888);
+		buttonItem.SetIcon(BUTTON_ITEM_STATUS_NORMAL, __pBitmap);
+		pHeader->SetButton(BUTTON_POSITION_RIGHT, buttonItem);
+		pHeader->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0x87,0xCD,0x4F));
+		pHeader->AddActionEventListener(*this);
+	}
 
 	return r;
 }
@@ -137,6 +150,15 @@ FormDispoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 			// kedal ?
 		}
 		break;
+
+		case ID_HEADER_ABOUT_BUTTON:
+		{
+			msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
+			int modalResult = 0;
+			msgBoxAbout.ShowAndWait(modalResult);
+			break;
+		}
+
 		default:
 			break;
 	}

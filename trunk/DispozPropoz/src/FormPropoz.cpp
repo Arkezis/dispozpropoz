@@ -29,32 +29,45 @@ FormPropoz::OnInitializing(void)
 {
 	result r = E_SUCCESS;
 
-	Header * pHeader = GetHeader();
-		if(pHeader){
-			pHeader->SetColor(Color(0x87,0xCD,0x4F));
-			pHeader->SetTitleText(L"Propoz'");
-		}
+	Footer* pFooter = GetFooter();
+	if(pFooter)
+	{
+		pFooter->SetColor(Color(0xF2,0xE7,0xE4));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetButtonColor(BUTTON_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
+		pFooter->SetItemColor(FOOTER_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
+		FooterItem  footerItemCreate;
+		footerItemCreate.Construct(ID_BUTTON_ADD);
+		footerItemCreate.SetText("Ajouter");
+		pFooter->AddItem(footerItemCreate);
+		pFooter->SetBackButton();
+		pFooter->AddActionEventListener(*this);
+		SetFormBackEventListener(this);
+	}
 
-		Footer* pFooter = GetFooter();
-		if(pFooter)
-		{
-			pFooter->SetColor(Color(0xF2,0xE7,0xE4));
-			pFooter->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
-			pFooter->SetButtonColor(BUTTON_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
-			pFooter->SetButtonColor(BUTTON_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
-			pFooter->SetButtonColor(BUTTON_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
-			pFooter->SetItemColor(FOOTER_ITEM_STATUS_NORMAL,Color(0xE5,0xCE,0xCB));
-			pFooter->SetItemColor(FOOTER_ITEM_STATUS_DISABLED,Color(0xE5,0xCE,0xCB));
-			pFooter->SetItemColor(FOOTER_ITEM_STATUS_HIGHLIGHTED,Color(0xE5,0xCE,0xCB));
-			pFooter->SetItemColor(FOOTER_ITEM_STATUS_PRESSED,Color(0xE5,0xCE,0xCB));
-			FooterItem  footerItemCreate;
-			footerItemCreate.Construct(ID_BUTTON_ADD);
-			footerItemCreate.SetText("Ajouter");
-			pFooter->AddItem(footerItemCreate);
-			pFooter->SetBackButton();
-			pFooter->AddActionEventListener(*this);
-			SetFormBackEventListener(this);
-		}
+	Header * pHeader = GetHeader();
+	if(pHeader){
+		pHeader->SetColor(Color(0x87,0xCD,0x4F));
+		pHeader->SetTitleText(L"Propoz'");
+
+		ButtonItem buttonItem;
+		buttonItem.Construct(BUTTON_ITEM_STYLE_ICON, ID_HEADER_ABOUT_BUTTON);
+		AppResource *pAppResource = Application::GetInstance()->GetAppResource();
+		Bitmap* __pBitmap = null;
+
+		if (pAppResource)
+			__pBitmap = pAppResource->GetBitmapN(L"info.png", BITMAP_PIXEL_FORMAT_ARGB8888);
+		buttonItem.SetIcon(BUTTON_ITEM_STATUS_NORMAL, __pBitmap);
+		pHeader->SetButton(BUTTON_POSITION_RIGHT, buttonItem);
+		pHeader->SetButtonColor(BUTTON_ITEM_STATUS_NORMAL,Color(0x87,0xCD,0x4F));
+		pHeader->AddActionEventListener(*this);
+	}
+
 
 
 		//Mapping des trucs a ecrire
@@ -117,6 +130,15 @@ FormPropoz::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 			pFormMgr->SendUserEvent(FormMgr::REQUEST_LISTDISPOZ, null);
 		}
 		break;
+
+		case ID_HEADER_ABOUT_BUTTON:
+		{
+			msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
+			int modalResult = 0;
+			msgBoxAbout.ShowAndWait(modalResult);
+			break;
+		}
+
 	default:
 		break;
 	}

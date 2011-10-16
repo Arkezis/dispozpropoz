@@ -29,6 +29,9 @@ public:
 	virtual void OnActionPerformed(const Osp::Ui::Control& source, int actionId);
 	virtual void OnFormBackRequested(Osp::Ui::Controls::Form& source);
 
+	static const int ID_HEADER_ABOUT_BUTTON = 501;
+	Osp::Ui::Controls::MessageBox msgBoxAbout;
+
 private:
 	Osp::Ui::Controls::EditField* pName;
 	Osp::Ui::Controls::EditField* pQuantity;
