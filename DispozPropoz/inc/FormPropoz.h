@@ -3,6 +3,7 @@
 
 #include <FBase.h>
 #include <FUi.h>
+#include <FSysSystemTime.h>
 
 class FormPropoz :
 	public Osp::Ui::Controls::Form,
@@ -27,6 +28,12 @@ public:
 	virtual result OnTerminating(void);
 	virtual void OnActionPerformed(const Osp::Ui::Control& source, int actionId);
 	virtual void OnFormBackRequested(Osp::Ui::Controls::Form& source);
+
+private:
+	Osp::Ui::Controls::EditField* pName;
+	Osp::Ui::Controls::EditField* pQuantity;
+	Osp::Ui::Controls::EditField* pUnit;
+	Osp::Ui::Controls::EditDate* pDate;
 
 };
 
