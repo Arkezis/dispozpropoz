@@ -171,11 +171,12 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 		else if(pCheckButton5->IsSelected()) categorySelected =4;
 		else if(pCheckButton6->IsSelected()) categorySelected =5;
 		textEntered = pSearchBar->GetText();
-		args->Add(textEntered);
 
 		Frame* pFrame = Osp::App::Application::GetInstance()->GetAppFrame()->GetFrame();
 		FormMgr* pFormMgr = dynamic_cast<FormMgr*> (pFrame->GetControl("FormMgr"));
 		if(pFormMgr == null)	return;
+
+		if(textEntered.CompareTo("")>0 || textEntered.CompareTo("")<0 )	args->Add(textEntered);
 		if(categorySelected.CompareTo(-1)>0){
 			args->Add(categorySelected.ToString());
 			AppLog("Search categ : %d \n",categorySelected.ToInt());
@@ -184,8 +185,12 @@ SearchForm::OnActionPerformed(const Osp::Ui::Control& source, int actionId)
 
 	}
 	case ID_HEADER_ABOUT_BUTTON:
-		AppLog("Not done yet: Handler for the header info button!");
+	{
+		msgBoxAbout.Construct("About","Blah blah blah",MSGBOX_STYLE_OK ,0);
+		int modalResult = 0;
+		msgBoxAbout.ShowAndWait(modalResult);
 		break;
+	}
 	default:
 		break;
 	}

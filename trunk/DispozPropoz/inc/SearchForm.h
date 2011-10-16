@@ -56,6 +56,7 @@ private:
 	Osp::Ui::Controls::CheckButton *pCheckButton6;
 	Integer categorySelected;
 	String textEntered;
+	Osp::Ui::Controls::MessageBox msgBoxAbout;
 
 	virtual void OnFormBackRequested(Osp::Ui::Controls::Form& source);
 	virtual void OnTouchDoublePressed(const Osp::Ui::Control &source, const Osp::Graphics::Point &currentPosition, const Osp::Ui::TouchEventInfo &touchInfo);
