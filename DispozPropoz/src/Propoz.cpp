@@ -24,7 +24,7 @@ void Propoz::construct(IList* aKey, IList* aValue){
 		else if (key->CompareTo("x") == 0) Double::Parse(value->GetPointer(),this->x);
 		else if (key->CompareTo("date") == 0) Long::Parse(value->GetPointer(),this->date);
 		else if (key->CompareTo("volumes") == 0) this->volumes =String(value->GetPointer());
-		else if (key->CompareTo("nombres") == 0) Double::Parse(value->GetPointer(),this->nombres);
+		else if (key->CompareTo("nombres") == 0) Integer::Parse(value->GetPointer(),this->nombres);
 		else if (key->CompareTo("y") == 0) Double::Parse(value->GetPointer(),this->y);
 		else if (key->CompareTo("domaine") == 0) Integer::Decode(value->GetPointer(),this->domaine);
 		else if (key->CompareTo("titre") == 0) this->titre =String(value->GetPointer());
@@ -39,6 +39,20 @@ void Propoz::construct(IList* aKey, IList* aValue){
 }
 
 String Propoz::getCategory(){
-	return "fruit";
+	switch(this->domaine){
+	case 0:
+		return "Produits laitiers";
+	case 1:
+		return "Fruits et légumes";
+	case 2:
+		return "Viande,Oeufs,Poissons";
+	case 3:
+		return "Epicerie";
+	case 4:
+		return "Autres";
+	case 5:
+		return "Boissons";
+	}
+	return "";
 }
 
