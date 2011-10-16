@@ -3,7 +3,9 @@
 #include "SearchForm.h"
 #include "FormPropoz.h"
 #include "FormDispoz.h"
+#include "FormDetails.h"
 #include "InfoForm.h"
+
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::App;
@@ -110,16 +112,16 @@ FormMgr::OnUserEventReceivedN(RequestId requestId, Osp::Base::Collection::IList*
 			break;
 		case REQUEST_DETAILSDISPOZ:
 			{
-				/*
-				Manageusers* manageUsers = new Manageusers();
-				manageUsers->Initialize();
-				pFrame->AddControl(*manageUsers);
-				pFrame->SetCurrentForm(*manageUsers);
-				manageUsers->RequestRedraw();
+
+				FormDetails* formDetails = new FormDetails();
+				formDetails->Initialize();
+				pFrame->AddControl(*formDetails);
+				pFrame->SetCurrentForm(*formDetails);
+				formDetails->RequestRedraw();
 				if (null != __prevForm)
 					pFrame->RemoveControl(*__prevForm);
-				__prevForm = manageUsers;
-			*/
+				__prevForm = formDetails;
+
 			}
 			break;
 		default:
